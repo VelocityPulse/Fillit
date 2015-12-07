@@ -6,7 +6,7 @@
 /*   By: cchameyr <cchameyr@students.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/07 16:26:41 by cchameyr          #+#    #+#             */
-/*   Updated: 2015/12/07 20:20:19 by cchameyr         ###   ########.fr       */
+/*   Updated: 2015/12/08 00:24:26 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	ft_fillit(char *path)
 	l_form	*list_form;
 
 	list_form = ft_getform(ft_fdcapteur(path));
-	if (ft_checkarray(l_form))
+	if (ft_checklinkedform(l_form))
 	{
 		
 	}
