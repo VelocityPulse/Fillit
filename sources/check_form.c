@@ -6,7 +6,7 @@
 /*   By: cchameyr <cchameyr@students.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/07 18:45:42 by cchameyr          #+#    #+#             */
-/*   Updated: 2015/12/07 21:19:06 by cchameyr         ###   ########.fr       */
+/*   Updated: 2015/12/08 00:09:30 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,13 @@ int		ft_checkarray(l_form *form)
 			return (0);
 		if (form->str[i] == '#')
 			full_case++;
-		if (form->str[i] == )
+		if (form->str[i] == '\n' && len_line == 4)
+		{
+			len_line = 0;
+			
+		}
+		len_line++;
+		i++;
 	}
 }
 
@@ -40,21 +46,20 @@ int		ft_checklistform(l_form *list_form)
 	len_length = 0;
 	while (form->next)
 	{
-		full_case = 0;
-		while (form->str[i])
+		if (ft_checkarray(form))
 		{
-			if (form->str[i] != '#' || form->str[i] != '.' || form->str[i])
-				return (0);
-			if (form->str[i] == '#')
-				full_case++;
-			if (form->str[i] == '\n' && len_lenght != 4)
-					return (0);
-			len_lenght++;
-			i++;
+			if (ft_checklinkedcase(form))
+				form = form->next;
 		}
-		if (full_case != 4 || !ft_checklinkedcase(form))
+		else
 			return (0);
 	}
+	if (ft_checkarray(form))
+	{
+		if (ft_checklinkedcase(form))
+			return (1);
+	}
+	return (0);
 }
 
 l_form	*ft_getform(char *str)
