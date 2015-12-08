@@ -6,7 +6,7 @@
 /*   By: aperraul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/07 17:03:45 by aperraul          #+#    #+#             */
-/*   Updated: 2015/12/08 04:50:19 by aperraul         ###   ########.fr       */
+/*   Updated: 2015/12/08 07:59:59 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,19 +18,19 @@ t_str	*ft_addstr(t_str *begin, char *str)
 	t_str	*list;
 	int		i;
 
+	i = 0;
 	list = begin;
 	if (!list)
 		list = ft_newlstr(NULL);
-	while (list->next)
-		list = list->next;
 	if (str)
 	{
-		i = 0;
+		while (list-next)
+			list = list->next;
 		while (str[i])
 		{
 			if (list->index < 32)
 			{
-				list->index = str[i];
+				list->str[i] = str[i];
 				list->index++;
 				i++;
 			}
@@ -43,7 +43,6 @@ t_str	*ft_addstr(t_str *begin, char *str)
 	}
 	return (begin);
 }
-
 
 t_str	*ft_addc(t_str *begin, char c)
 {
@@ -58,37 +57,30 @@ t_str	*ft_addc(t_str *begin, char c)
 	{
 		if (list->index < 32)
 		{
-			list->index = c;
+			list->str[list->index] = c;
 			list->index++;
 		}
 		else
 		{
 			list->next = ft_newlstr(begin);
 			list = list->next;
-			list->index = c;
-			list->index++;
+			list->str[0] = c;
+			index++;
 		}
 	}
 	return (begin);
 }
 
-t_str	*ft_newlstr(t_str *begin)
+t_str	*ft_newlstr(void)
 {
 	t_str	*list;
 
-	list = (t_str *)malloc(sizeof(t_str));
-	if (!begin)
-		begin = list;
-	else
-	{
-		while (begin->next)
-			begin = begin->next;
-		begin->next = list;
-	}
+	if (!(list = (t_str *)malloc(sizeof(t_str))))
+		return (NULL);
 	list->next = NULL;
 	list->index = 0;
 	ft_bzero(list->str, 32);
-	return (begin);
+	return (list);
 }
 
 int		ft_indexcpt(t_str *begin)
@@ -96,21 +88,16 @@ int		ft_indexcpt(t_str *begin)
 	int		i;
 	t_str	*list;
 
-	if(!begin)
+	i = 0;
+	if (!begin)
 		return (0);
 	list = begin;
-	i = 0;
-	if (list->next)
+	while (list->next)
 	{
-		while (list->next)
-		{
-			i += list->index;
-			list = list->next;
-		}
+		i += list->index;
+		list = list->next;
 	}
-	while (list->str[i] != '\0')
-		i++;
-	return (i);
+	return (i + list->index);
 }
 
 t_str	*ft_freelststr(t_str *begin)
@@ -135,38 +122,49 @@ t_str	*ft_freelststr(t_str *begin)
 char	*ft_exportstr(t_str *begin)
 {
 	t_str	*list;
-	int		i;
-	int		j;
 	char	*str;
 
-	if (!begin)
-		return (NULL);
-	i = ft_indexcpt(begin);
-	str = (char *)malloc(sizeof(char) * i + 1);
-	if (!str)
-		return (NULL);
-	str[i + 1] = '\0';
 	list = begin;
-	j = 0;
-	if (list->next)
+	if (!list)
+		return (NULL);
+	if (!(str = (char *)malloc(sizeof(char) * ft_indexcpt(begin) + 1)))
+		return (NULL);
+	while (list->next)
 	{
-		while (list->next)
-		{
-			i = 0;
-			while (i < 32 && list->str[i] != '\0')
-			{
-				str[j] = list->str[i];
-				i++;
-				j++;
-			}
-		}
-		i = 0;
+		str = ft_strcat(str, list->str);
+		list = list->next;
 	}
-	while ( i < 32 && list->str[i] != '\0')
-	{
-		str[j] = list->str[i];
-		i++;
-		j++;
-	}
+	str = ft_strcat(str, list->str);
 	return (str);
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

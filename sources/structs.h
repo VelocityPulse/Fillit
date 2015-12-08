@@ -6,7 +6,7 @@
 /*   By: aperraul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/07 17:05:29 by aperraul          #+#    #+#             */
-/*   Updated: 2015/12/08 06:48:36 by aperraul         ###   ########.fr       */
+/*   Updated: 2015/12/08 07:49:05 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ typedef struct		s_square
 
 t_str				*ft_addstr(t_str *begin, char *str);
 t_str				*ft_addc(t_str *begin, char c);
-t_str				*ft_newlstr(t_str *begin);
+t_str				*ft_newlstr(void);
 int					ft_indexcpt(t_str *begin);
 t_str				*ft_freelststr(t_str *begin);
 char				*ft_exportstr(t_str *begin);

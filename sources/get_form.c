@@ -6,7 +6,7 @@
 /*   By: cchameyr <cchameyr@students.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/08 04:19:27 by cchameyr          #+#    #+#             */
-/*   Updated: 2015/12/08 05:22:21 by cchameyr         ###   ########.fr       */
+/*   Updated: 2015/12/08 08:25:27 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,14 @@ t_form	*ft_getform(char *str, int x, int y, int i)
 	form = begin_form;
 	while (str[i])
 	{
-		if (x <= 4)
+		if (x < 4)
 		{
 			form->shape[y][x] = str[i];
 			x++;
 		}
 		else
 			y++;
-		if (y == 5)
+		if (y == 4)
 		{
 			form = ft_newform(begin_form);
 			y = 0;
@@ -37,9 +37,7 @@ t_form	*ft_getform(char *str, int x, int y, int i)
 		}
 		i++;
 	}
-	if (i == (form->index * 20) + 1)
-		return (begin_form);
-	return (NULL)
+	return (i == (form->index * 20) + 1 ? begin_form : NULL);
 }
 
 char	*ft_dscapture(char *path)
@@ -50,7 +48,7 @@ char	*ft_dscapture(char *path)
 	t_str	l_str;
 
 	if ((fd = open(path, O_RDONLY) < 0))
-		return (0);
+		return (NULL);
 	while (read(fd, &c, 1))
 		l_str = ft_addc(l_str, c);
 	str = ft_exportstr(l_str);
