@@ -6,7 +6,7 @@
 /*   By: cchameyr <cchameyr@students.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/07 18:45:42 by cchameyr          #+#    #+#             */
-/*   Updated: 2015/12/08 00:20:46 by cchameyr         ###   ########.fr       */
+/*   Updated: 2015/12/08 00:33:32 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ l_form	*ft_getform(char *str)
 		if (str[i] == '\n' && str[i + 1] == '\n')
 		{
 			list_form = ft_newlform(list_form);
-			list_form->str = ft_addform(ft_strsub(str, start, i - 1));
+			list_form->str = ft_addform(list_form, ft_strsub(str, start, i - 1));
 			start = i + 2;
 		}
 		i++;
