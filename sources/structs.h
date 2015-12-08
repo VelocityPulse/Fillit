@@ -6,7 +6,7 @@
 /*   By: aperraul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/07 17:05:29 by aperraul          #+#    #+#             */
-/*   Updated: 2015/12/08 07:49:05 by cchameyr         ###   ########.fr       */
+/*   Updated: 2015/12/08 09:33:36 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 
 # include <stdlib.h>
 # include "libft.h"
+
+# define YOLO ft_putstr("\nYOLO\n\n");
 
 typedef	struct		s_str
 {
@@ -47,6 +49,5 @@ char				*ft_exportstr(t_str *begin);
 t_form				*ft_addform(t_form *begin);
 t_form				*ft_newform(int index);
 void				ft_displaylstform(t_form *begin);
-int					ft_formcmp(t_form *begin);
 
 #endif

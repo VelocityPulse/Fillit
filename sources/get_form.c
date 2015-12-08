@@ -6,7 +6,7 @@
 /*   By: cchameyr <cchameyr@students.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/08 04:19:27 by cchameyr          #+#    #+#             */
-/*   Updated: 2015/12/08 08:25:27 by cchameyr         ###   ########.fr       */
+/*   Updated: 2015/12/08 09:39:23 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ t_form	*ft_getform(char *str, int x, int y, int i)
 	t_form	*form;
 	t_form	*begin_form;
 
-	begin_form = ft_newform(NULL);
+	begin_form = ft_addform(begin_form);
 	form = begin_form;
 	while (str[i])
 	{
@@ -30,7 +30,7 @@ t_form	*ft_getform(char *str, int x, int y, int i)
 			y++;
 		if (y == 4)
 		{
-			form = ft_newform(begin_form);
+			form = ft_addform(begin_form);
 			y = 0;
 			x = 0;
 			i++;
@@ -40,14 +40,15 @@ t_form	*ft_getform(char *str, int x, int y, int i)
 	return (i == (form->index * 20) + 1 ? begin_form : NULL);
 }
 
-char	*ft_dscapture(char *path)
+char	*ft_fdcapture(char *path)
 {
 	int		fd;
 	char	c;
 	char	*str;
-	t_str	l_str;
+	t_str	*l_str;
 
-	if ((fd = open(path, O_RDONLY) < 0))
+	l_str = NULL;
+	if ((fd = open(path, O_RDONLY)) < 0)
 		return (NULL);
 	while (read(fd, &c, 1))
 		l_str = ft_addc(l_str, c);

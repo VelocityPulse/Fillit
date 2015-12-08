@@ -6,7 +6,7 @@
 /*   By: aperraul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/07 17:03:45 by aperraul          #+#    #+#             */
-/*   Updated: 2015/12/08 08:53:03 by cchameyr         ###   ########.fr       */
+/*   Updated: 2015/12/08 09:39:47 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ t_str	*ft_addc(t_str *begin, char c)
 			list->next = ft_newlstr();
 			list = list->next;
 			list->str[0] = c;
-			index++;
+			list->index++;
 		}
 	}
 	return (begin);
