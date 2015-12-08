@@ -6,7 +6,7 @@
 /*   By: cchameyr <cchameyr@students.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/08 07:21:07 by cchameyr          #+#    #+#             */
-/*   Updated: 2015/12/08 07:21:08 by cchameyr         ###   ########.fr       */
+/*   Updated: 2015/12/08 08:48:33 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int		ft_checkarray(t_form *form)
 
 int		ft_checklistform(t_form *list_form)
 {
-	t_form form;
+	t_form *form;
 
 	if (!list_form)
 		return 0;
@@ -60,7 +60,7 @@ int		ft_checklistform(t_form *list_form)
 	}
 	if (ft_checkarray(form))
 	{
-		if (!(ft_cheklinkedform(form, 0, 0)))
+		if (!(ft_checklinkedform(form, 0, 0)))
 			return (0);
 	}
 	return (1);

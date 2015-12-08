@@ -6,12 +6,11 @@
 /*   By: aperraul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/07 17:03:45 by aperraul          #+#    #+#             */
-/*   Updated: 2015/12/08 07:59:59 by cchameyr         ###   ########.fr       */
+/*   Updated: 2015/12/08 08:53:03 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "structs.h"
-#include <stdlib.h>
 
 t_str	*ft_addstr(t_str *begin, char *str)
 {
@@ -21,10 +20,10 @@ t_str	*ft_addstr(t_str *begin, char *str)
 	i = 0;
 	list = begin;
 	if (!list)
-		list = ft_newlstr(NULL);
+		list = ft_newlstr();
 	if (str)
 	{
-		while (list-next)
+		while (list->next)
 			list = list->next;
 		while (str[i])
 		{
@@ -36,7 +35,7 @@ t_str	*ft_addstr(t_str *begin, char *str)
 			}
 			else
 			{
-				list->next = ft_newlstr(list);
+				list->next = ft_newlstr();
 				list = list->next;
 			}
 		}
@@ -50,7 +49,7 @@ t_str	*ft_addc(t_str *begin, char c)
 
 	list = begin;
 	if (!list)
-		list = ft_newlstr(NULL);
+		list = ft_newlstr();
 	while (list->next)
 		list = list->next;
 	if (c)
@@ -62,7 +61,7 @@ t_str	*ft_addc(t_str *begin, char c)
 		}
 		else
 		{
-			list->next = ft_newlstr(begin);
+			list->next = ft_newlstr();
 			list = list->next;
 			list->str[0] = c;
 			index++;
@@ -137,34 +136,3 @@ char	*ft_exportstr(t_str *begin)
 	str = ft_strcat(str, list->str);
 	return (str);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
