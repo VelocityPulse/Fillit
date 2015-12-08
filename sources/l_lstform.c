@@ -6,7 +6,7 @@
 /*   By: cchameyr <cchameyr@students.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/08 00:32:45 by cchameyr          #+#    #+#             */
-/*   Updated: 2015/12/08 01:39:33 by cchameyr         ###   ########.fr       */
+/*   Updated: 2015/12/08 01:46:55 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,4 +61,13 @@ void	ft_displaylstform(l_form *begin)
 	}
 	ft_putstr(begin->str);
 	ft_putchar('\n');
+}
+
+int		ft_formcmp(l_form *begin)
+{
+	if (!begin)
+		return (0);
+	while (begin->next)
+		begin = begin->next;
+	return (begin->index);
 }
