@@ -6,7 +6,7 @@
 /*   By: cchameyr <cchameyr@students.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/07 17:07:11 by cchameyr          #+#    #+#             */
-/*   Updated: 2015/12/08 04:26:29 by cchameyr         ###   ########.fr       */
+/*   Updated: 2015/12/08 07:01:17 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,9 @@
 char	*ft_fdcapture(char *path);
 t_form	*ft_getform(char *str, int x, int y, int i);
 int		ft_checkarray(t_form *form);
-int		ft_checklinkedform(t_form *form);
+int		ft_checklinkedform(t_form *form, int x, int y);
+int		ft_checklinkedfirstline(t_form *form, int x, int y);
+int		ft_checklinkedlastline(t_form *form, int x, int y);[
 int		ft_checklistform(t_form *list_form);
 
 #endif

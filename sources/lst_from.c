@@ -6,7 +6,7 @@
 /*   By: aperraul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/08 04:04:30 by aperraul          #+#    #+#             */
-/*   Updated: 2015/12/08 04:50:01 by aperraul         ###   ########.fr       */
+/*   Updated: 2015/12/08 05:06:47 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,10 +70,10 @@ t_form		*ft_addfrom(t_form *begin, char *str)
 	{
 		i = 0;
 		y = 0;
-		while (str[i] && y <= 4)
+		while (str[i] && y < 4)
 		{
 			x = 0;
-			while (str[i] && x <= 5)
+			while (str[i] && x < 5)
 			{
 				list->shape[y][x] = str[i];
 				i++;
