@@ -1,76 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_form.c                                       :+:      :+:    :+:   */
+/*   check_array.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cchameyr <cchameyr@students.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/12/08 04:19:13 by cchameyr          #+#    #+#             */
-/*   Updated: 2015/12/08 07:08:00 by aperraul         ###   ########.fr       */
+/*   Created: 2015/12/08 07:21:07 by cchameyr          #+#    #+#             */
+/*   Updated: 2015/12/08 07:21:08 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
-
-int		ft_checklinkedfirstline(t_form *form, int x, int y)
-{
-	int match;
-
-	match = 0;
-	if (x == 0)
-	{
-		if (form->shape[y + 1][x] == '#')
-			match++;
-		if (form->shape[y][x + 1] == '#')
-			match++;
-	}
-	if (x > 0)
-	{
-		if (form->shape[y + 1][x] == '#')
-			match++;
-		if (form->shape[y][x - 1] == '#')
-			match++;
-		if (form->shape[y][x + 1] == '#')
-			match++;
-	}
-	return (match);
-}
-
-int		ft_checklinkedlastline(t_form *form, int x, int y)
-{
-	int match;
-
-	match = 0;
-	if (x == 0)
-	{
-		if (form->shape[y - 1][x] == '#')
-			match++;
-		if (form->shape[y][x + 1] == '#')
-			match++;
-	}
-	if (x > 0)
-	{
-		if (form->shape[])
-	}
-}
-
-int		ft_checklinkedform(t_form *form, int x, int y)
-{
-	int	match;
-
-	match = 0;
-	while (y < 4)
-	{
-		while (x < 4)
-		{
-			if (y == 0)
-				match += ft_checklinkedfirstline(form, x, y);
-			else
-				match += ft_checklinked
-		}
-		y++;
-	}
-}
 
 int		ft_checkarray(t_form *form)
 {

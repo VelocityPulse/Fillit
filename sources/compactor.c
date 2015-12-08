@@ -6,7 +6,7 @@
 /*   By: aperraul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/08 03:40:04 by aperraul          #+#    #+#             */
-/*   Updated: 2015/12/08 07:06:20 by aperraul         ###   ########.fr       */
+/*   Updated: 2015/12/08 07:22:48 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 int				ft_nbform(t_form *form)
 {
-	int		i;
 	t_form	*list;
 
 	if (!form)
@@ -22,8 +21,7 @@ int				ft_nbform(t_form *form)
 	list = form;
 	while (list->next)
 		list = list->next;
-	i = list->index;
-	return (i);
+	return (list->index);
 }
 
 t_square		*ft_min_size(int size)
@@ -38,7 +36,7 @@ t_square		*ft_min_size(int size)
 	y = 0;
 	while (y < size)
 	{
-		ft_memset(carre->shape[y],'.',size);
+		ft_memset(carre->shape[y], '.' ,size);
 		carre->shape[y][size] = '\n';
 		y++;
 	}
