@@ -6,15 +6,15 @@
 /*   By: cchameyr <cchameyr@students.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/08 00:32:45 by cchameyr          #+#    #+#             */
-/*   Updated: 2015/12/08 01:46:55 by cchameyr         ###   ########.fr       */
+/*   Updated: 2015/12/08 02:20:01 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "structs.h"
 
-l_form	*ft_addform(l_form *begin, char *str)
+t_form	*ft_addform(t_form *begin, char *str)
 {
-	l_form	*list;
+	t_form	*list;
 	int		index;
 
 	list = begin;
@@ -35,21 +35,21 @@ l_form	*ft_addform(l_form *begin, char *str)
 	list = ft_newform();
 	list->str = str;
 	list->index = 1;
-	return (list)
+	return (list);
 }
 
-l_form	*ft_newform(void)
+t_form	*ft_newform(void)
 {
-	l_form	*list;
+	t_form	*list;
 
-	list = (l_list *)malloc(sizeof(l_list));
+	list = (t_form *)malloc(sizeof(t_form));
 	list->next = NULL;
 	list->str = NULL;
 	list->index = 0;
 	return (list);
 }
 
-void	ft_displaylstform(l_form *begin)
+void	ft_displaylstform(t_form *begin)
 {
 	if (!begin)
 		return ;
@@ -63,7 +63,7 @@ void	ft_displaylstform(l_form *begin)
 	ft_putchar('\n');
 }
 
-int		ft_formcmp(l_form *begin)
+int		ft_formcmp(t_form *begin)
 {
 	if (!begin)
 		return (0);

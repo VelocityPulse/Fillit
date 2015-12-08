@@ -6,16 +6,16 @@
 /*   By: aperraul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/07 17:03:45 by aperraul          #+#    #+#             */
-/*   Updated: 2015/12/08 01:50:46 by aperraul         ###   ########.fr       */
+/*   Updated: 2015/12/08 02:45:21 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "structs.h"
 #include <stdlib.h>
 
-l_str	*ft_addstr(l_str *begin, char *str)
+t_str	*ft_addstr(t_str *begin, char *str)
 {
-	l_str	*list;
+	t_str	*list;
 	int		i;
 
 	list = begin;
@@ -45,12 +45,12 @@ l_str	*ft_addstr(l_str *begin, char *str)
 }
 
 
-l_str	*ft_addc(l_str *begin, char c) 
+t_str	*ft_addc(t_str *begin, char c)
 {
-	l_str	*list;
+	t_str	*list;
 
 	list = begin;
-	if(!list)
+	if (!list)
 		list = ft_newlstr(NULL);
 	while (list->next)
 		list = list->next;
@@ -63,7 +63,7 @@ l_str	*ft_addc(l_str *begin, char c)
 		}
 		else
 		{
-			list->next = ft_newlstr(list);
+			list->next = ft_newlstr(begin);
 			list = list->next;
 			list->index = c;
 			list->index++;
@@ -72,11 +72,11 @@ l_str	*ft_addc(l_str *begin, char c)
 	return (begin);
 }
 
-l_str	*ft_newlstr(l_str *begin)
+t_str	*ft_newlstr(t_str *begin)
 {
-	l_str	*list;
+	t_str	*list;
 
-	list = (l_str *)malloc(sizeof(l_str));
+	list = (t_str *)malloc(sizeof(t_str));
 	if (!begin)
 		begin = list;
 	else
@@ -91,10 +91,10 @@ l_str	*ft_newlstr(l_str *begin)
 	return (begin);
 }
 
-int		ft_indexcpt(l_str *begin)
+int		ft_indexcpt(t_str *begin)
 {
 	int		i;
-	l_str	*list;
+	t_str	*list;
 
 	if(!begin)
 		return (0);
@@ -113,10 +113,10 @@ int		ft_indexcpt(l_str *begin)
 	return (i);
 }
 
-l_str	*ft_freelststr(l_str *begin)
+t_str	*ft_freelststr(t_str *begin)
 {
-	l_str	*temp1;
-	l_str	*temp2;
+	t_str	*temp1;
+	t_str	*temp2;
 
 	if (begin)
 	{
@@ -127,15 +127,14 @@ l_str	*ft_freelststr(l_str *begin)
 			free(temp1);
 			temp1 = temp2;
 		}
-		free(temp1);
 		begin = NULL;
 	}
 	return (begin);
 }
 
-char	*ft_exportstr(l_str *begin)
+char	*ft_exportstr(t_str *begin)
 {
-	l_str	*list;
+	t_str	*list;
 	int		i;
 	int		j;
 	char	*str;
@@ -169,5 +168,5 @@ char	*ft_exportstr(l_str *begin)
 		i++;
 		j++;
 	}
-	return (0);
+	return (str);
 }
