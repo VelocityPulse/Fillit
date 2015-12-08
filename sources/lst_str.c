@@ -6,7 +6,7 @@
 /*   By: aperraul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/07 17:03:45 by aperraul          #+#    #+#             */
-/*   Updated: 2015/12/08 00:28:36 by aperraul         ###   ########.fr       */
+/*   Updated: 2015/12/08 01:50:46 by aperraul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ int		ft_indexcpt(l_str *begin)
 		return (0);
 	list = begin;
 	i = 0;
-	if (list->next)#
+	if (list->next)
 	{
 		while (list->next)
 		{
@@ -109,22 +109,65 @@ int		ft_indexcpt(l_str *begin)
 		}
 	}
 	while (list->str[i] != '\0')
-	{
 		i++;
-	}
 	return (i);
 }
 
-void	ft_freelststr(l_str *begin)
+l_str	*ft_freelststr(l_str *begin)
 {
-	l_str	*list;
+	l_str	*temp1;
+	l_str	*temp2;
 
 	if (begin)
 	{
+		temp1 = begin;
+		while (temp1->next)
+		{
+			temp2 = temp1->next;
+			free(temp1);
+			temp1 = temp2;
+		}
+		free(temp1);
+		begin = NULL;
+	}
+	return (begin);
+}
+
+char	*ft_exportstr(l_str *begin)
+{
+	l_str	*list;
+	int		i;
+	int		j;
+	char	*str;
+
+	if (!begin)
+		return (NULL);
+	i = ft_indexcpt(begin);
+	str = (char *)malloc(sizeof(char) * i + 1);
+	if (!str)
+		return (NULL);
+	str[i + 1] = '\0';
+	list = begin;
+	j = 0;
+	if (list->next)
+	{
 		while (list->next)
 		{
-			free(list);
-			list->next
+			i = 0;
+			while (i < 32 && list->str[i] != '\0')
+			{
+				str[j] = list->str[i];
+				i++;
+				j++;
+			}
 		}
+		i = 0;
 	}
+	while ( i < 32 && list->str[i] != '\0')
+	{
+		str[j] = list->str[i];
+		i++;
+		j++;
+	}
+	return (0);
 }
