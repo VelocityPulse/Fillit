@@ -6,81 +6,47 @@
 /*   By: aperraul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/08 04:04:30 by aperraul          #+#    #+#             */
-/*   Updated: 2015/12/08 04:50:01 by aperraul         ###   ########.fr       */
+/*   Updated: 2015/12/08 05:55:43 by aperraul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "structs.h"
 
-t_form		*ft_newform(t_form *begin)
+t_form		*ft_newform(int index)
 {
-	int		x;
 	int		y;
-
 	t_form	*list;
-	list = (t_form *)malloc(sizeof(t_form));
-	if (!list)
-		return (NULL);
-	if (!begin)
-		begin = list;
-	else
-	{
-		while (begin->next)
-			begin = begin->next;
-		begin->next = list;
-	}
-	list->next = NULL;
-	list->index = 0;
+
 	y = 0;
-	while (y < 4)
+	if (!(list = (t_form *)malloc(sizeof(t_form))))
+		return (NULL);
+	while (list->shape[y])
 	{
-		x = 0;
-		while (x < 5)
-		{
-			list->shape[y][x] = '.';
-			x++;
-		}
-		if (x == 5)
-			list->shape[y][x] = '\n';
+		ft_bzero(list->shape[y], 4);
 		y++;
 	}
-	x = 0;
-	while (x < 5)
-	{
-		list->shape[y][x] = '.';
-		x++;
-	}
-	list->shape[y][x] = '\0';
-	return (begin);
+	list->index = index;
+	list->next = NULL;
+	return (list);
 }
 
-t_form		*ft_addfrom(t_form *begin, char *str)
+t_form		*ft_addform(t_form *begin)
 {
 	t_form	*list;
-	int		i;
-	int		x;
-	int		y;
+	int		index;
 
 	list = begin;
-	if(!list)
-		list = ft_newform(NULL);
-	while (list->next)
-		list = list->next;
-	if (str)
+	index = 1;
+	if (!list)
+		list = ft_newform(index);
+	else
 	{
-		i = 0;
-		y = 0;
-		while (str[i] && y <= 4)
+		while (list->next)
 		{
-			x = 0;
-			while (str[i] && x <= 5)
-			{
-				list->shape[y][x] = str[i];
-				i++;
-				x++;
-			}
-			y++;
+			list = list->next;
+			index++;
 		}
+		list->next = ft_newform(index);
 	}
 	return (begin);
 }
@@ -88,28 +54,20 @@ t_form		*ft_addfrom(t_form *begin, char *str)
 void	ft_displayform(t_form *begin)
 {
 	t_form	*list;
-	int		x;
 	int		y;
 
 	if (!begin)
 		return ;
-	if (list->next)
+	list = begin;
+	while (list->next)
 	{
-		while (list->next)
+		y = 0;
+		while (y < 4)
 		{
-			y = 0;
-			while (y <= 4)
-				{
-					x = 0;
-					while (x <= 5)
-					{
-						ft_putchar(list->shape[y][x]);
-						x++;
-					}
-					y++;
-				}
+			ft_putstr(list->shape[y]);
 			list = list->next;
+			y++;
 		}
 	}
-	return ;
+	ft_putstr(list->shape[y]);
 }
