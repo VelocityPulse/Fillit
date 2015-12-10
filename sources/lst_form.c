@@ -6,7 +6,7 @@
 /*   By: aperraul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/08 04:04:30 by aperraul          #+#    #+#             */
-/*   Updated: 2015/12/08 07:08:09 by aperraul         ###   ########.fr       */
+/*   Updated: 2015/12/10 13:30:27 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ t_form		*ft_newform(int index)
 	y = 0;
 	if (!(list = (t_form *)malloc(sizeof(t_form))))
 		return (NULL);
-	while (list->shape[y])
+	while (y < 4)
 	{
 		ft_bzero(list->shape[y], 4);
 		y++;
@@ -37,7 +37,7 @@ t_form		*ft_addform(t_form *begin)
 
 	list = begin;
 	index = 1;
-	if (!list)
+	if (!begin)
 		list = ft_newform(index);
 	else
 	{

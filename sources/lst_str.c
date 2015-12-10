@@ -6,7 +6,7 @@
 /*   By: aperraul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/07 17:03:45 by aperraul          #+#    #+#             */
-/*   Updated: 2015/12/08 09:39:47 by cchameyr         ###   ########.fr       */
+/*   Updated: 2015/12/10 13:10:19 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,9 +47,9 @@ t_str	*ft_addc(t_str *begin, char c)
 {
 	t_str	*list;
 
+	if (!begin)
+		begin = ft_newlstr();
 	list = begin;
-	if (!list)
-		list = ft_newlstr();
 	while (list->next)
 		list = list->next;
 	if (c)
@@ -82,18 +82,18 @@ t_str	*ft_newlstr(void)
 	return (list);
 }
 
-int		ft_indexcpt(t_str *begin)
+int	ft_indexcpt(t_str *begin)
 {
 	int		i;
-	t_str	*list;
+	t_str		*list;
 
 	i = 0;
 	if (!begin)
-		return (0);
+	  return (0);
 	list = begin;
 	while (list->next)
 	{
-		i += list->index;
+	  	i += list->index;
 		list = list->next;
 	}
 	return (i + list->index);
@@ -130,9 +130,9 @@ char	*ft_exportstr(t_str *begin)
 		return (NULL);
 	while (list->next)
 	{
-		str = ft_strcat(str, list->str);
+		str = ft_strncat(str, list->str, list->index);
 		list = list->next;
 	}
-	str = ft_strcat(str, list->str);
+	str = ft_strncat(str, list->str, list->index);
 	return (str);
 }

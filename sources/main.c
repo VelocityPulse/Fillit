@@ -6,7 +6,7 @@
 /*   By: cchameyr <cchameyr@students.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/07 16:26:41 by cchameyr          #+#    #+#             */
-/*   Updated: 2015/12/08 08:26:34 by cchameyr         ###   ########.fr       */
+/*   Updated: 2015/12/10 13:10:46 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ int		ft_fillit(char *path)
 		return (0);
 	if (!(list_form = ft_getform(str, 0, 0, 0)))
 		return (0);
+	YOLO
 	if (!(ft_checklistform(list_form)))
 		return (0);
 	return (1);
