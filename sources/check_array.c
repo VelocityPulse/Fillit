@@ -6,7 +6,7 @@
 /*   By: cchameyr <cchameyr@students.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/08 07:21:07 by cchameyr          #+#    #+#             */
-/*   Updated: 2015/12/08 08:48:33 by cchameyr         ###   ########.fr       */
+/*   Updated: 2015/12/10 16:17:23 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int		ft_checkarray(t_form *form)
 	sharp = 0;
 	while (y < 4)
 	{
-		while (x < 5)
+		while (x < 4)
 		{
 			if (form->shape[y][x] != '#' && form->shape[y][x] != '.' &&
 				form->shape[y][x] != '\n')

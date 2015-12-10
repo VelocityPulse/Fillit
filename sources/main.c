@@ -6,7 +6,7 @@
 /*   By: cchameyr <cchameyr@students.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/07 16:26:41 by cchameyr          #+#    #+#             */
-/*   Updated: 2015/12/10 15:29:32 by cchameyr         ###   ########.fr       */
+/*   Updated: 2015/12/10 16:40:12 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@ int		ft_fillit(char *path)
 		return (0);
 	if (!(list_form = ft_getform(str, 0, 0, 0)))
 		return (0);
-	YOLO
 	if (!(ft_checklistform(list_form)))
 		return (0);
+	ft_displayform(list_form, 0, 0);
 	return (1);
 }
 
@@ -33,6 +33,8 @@ int		main(int argc, char **argv)
 	{
 		if (!ft_fillit(argv[1]))
 			ft_putstr("error\n");
+		else
+			ft_putstr("victoire\n");
 	}
 	else
 		ft_putstr("error\n");

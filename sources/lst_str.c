@@ -6,42 +6,11 @@
 /*   By: aperraul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/07 17:03:45 by aperraul          #+#    #+#             */
-/*   Updated: 2015/12/10 13:10:19 by cchameyr         ###   ########.fr       */
+/*   Updated: 2015/12/10 16:42:08 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "structs.h"
-
-t_str	*ft_addstr(t_str *begin, char *str)
-{
-	t_str	*list;
-	int		i;
-
-	i = 0;
-	list = begin;
-	if (!list)
-		list = ft_newlstr();
-	if (str)
-	{
-		while (list->next)
-			list = list->next;
-		while (str[i])
-		{
-			if (list->index < 32)
-			{
-				list->str[i] = str[i];
-				list->index++;
-				i++;
-			}
-			else
-			{
-				list->next = ft_newlstr();
-				list = list->next;
-			}
-		}
-	}
-	return (begin);
-}
 
 t_str	*ft_addc(t_str *begin, char c)
 {

@@ -6,7 +6,7 @@
 /*   By: cchameyr <cchameyr@students.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/08 07:21:21 by cchameyr          #+#    #+#             */
-/*   Updated: 2015/12/08 07:40:01 by cchameyr         ###   ########.fr       */
+/*   Updated: 2015/12/10 16:18:44 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,7 +111,8 @@ int		ft_checklinkedform(t_form *form, int x, int y)
 		}
 		y++;
 	}
-	if (match == 4 || match == 8)
+	
+	if (match == 6 || match == 8)
 		return (1);
 	return (0);
 }
