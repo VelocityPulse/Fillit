@@ -6,7 +6,7 @@
 /*   By: aperraul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/07 17:05:29 by aperraul          #+#    #+#             */
-/*   Updated: 2015/12/10 13:26:53 by cchameyr         ###   ########.fr       */
+/*   Updated: 2015/12/10 15:14:29 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,7 @@ int					ft_indexcpt(t_str *begin);
 t_str				*ft_freelststr(t_str *begin);
 char				*ft_exportstr(t_str *begin);
 
-t_form				*ft_addform(t_form *begin);
 t_form				*ft_newform(int index);
-void				ft_displaylstform(t_form *begin);
+void				ft_displayform(t_form *begin);
 
 #endif

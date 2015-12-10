@@ -6,7 +6,7 @@
 /*   By: cchameyr <cchameyr@students.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/08 04:19:27 by cchameyr          #+#    #+#             */
-/*   Updated: 2015/12/10 13:32:09 by cchameyr         ###   ########.fr       */
+/*   Updated: 2015/12/10 15:43:57 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,28 +15,33 @@
 t_form	*ft_getform(char *str, int x, int y, int i)
 {
 	t_form	*form;
-	t_form	*begin_form;
+	t_form	*begin;
 
-	begin_form = NULL;
-	begin_form = ft_addform(begin_form);
-	form = begin_form;
-	// faire une nouvelle boucle ici pour incrementer la liste chaine 
-	while (y < 4 && str[i])
+	begin = ft_newform(1);
+	form = begin;
+	while (str[i])
 	{
 		x = 0;
 		while (x < 4 && str[i])
 		{
 			form->shape[y][x] = str[i];
-			YOLO
-			ft_putchar(form->shape[y][x]);
 			x++;
 			i++;
 		}
 		i++;
 		y++;
+		if (y == 4)
+		{
+			form->next = ft_newform(form->index++);
+			form = form->next;
+			y = 0;
+			i++;
+		}
 	}
 	YOLO
-	return (i == (form->index * 20) + 1 ? begin_form : NULL);
+		ft_putnbr(ft_strlen(str));
+	YOLO
+	return (i - (5 * form->index + 1) == (form->index * 16) ? NULL : begin);
 }
 
 char	*ft_fdcapture(char *path)
