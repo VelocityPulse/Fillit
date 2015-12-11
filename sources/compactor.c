@@ -6,7 +6,7 @@
 /*   By: aperraul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/08 03:40:04 by aperraul          #+#    #+#             */
-/*   Updated: 2015/12/11 11:44:33 by aperraul         ###   ########.fr       */
+/*   Updated: 2015/12/11 12:18:46 by aperraul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,30 +37,36 @@ int				ft_min_size(int nbform)
 t_square		*ft_carre_create(int size)
 {
 	int y;
-	t_square	*carre;
+	t_square	*square;
 
-	if(!(carre = (t_square *)malloc(sizeof(t_square) * size)))
+	if(!(square = (t_square *)malloc(sizeof(t_square) * size)))
 		return (NULL);
-	carre->next = NULL;
-	carre->index = 0;
 	y = 0;
 	while (y < size)
 	{
-		ft_memset(carre->shape[y], '.' ,size);
+		ft_memset(square->array[y], '.' ,size);
 		y++;
 	}
-	return (carre);
+	return (square);
 }
 
 t_square		*ft_compact(t_form *form)
 {
-	t_square	*carre;
+	int			x;
+	int			y;
+	t_square	*square;
+	int			size;
 
-	carre = ft_carre_create(ft_min_size(ft_nbform(form)));
+	size = ft_min_size(ft_nbform(form));
+	square = ft_carre_create(size);
 	while (form->next)
 	{
-		//ckeck de la piece avec les emplacements possible;
-		////(avec prio haut-gauche)
+		y = 0;
+		while (y < size)
+		{
+			x = 0;
+			while (x < size)
+		}
 		//fonction Put(pour appliquer la piece sur le carre;
 		//
 	}
