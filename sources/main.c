@@ -6,7 +6,7 @@
 /*   By: cchameyr <cchameyr@students.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/07 16:26:41 by cchameyr          #+#    #+#             */
-/*   Updated: 2015/12/11 12:23:05 by cchameyr         ###   ########.fr       */
+/*   Updated: 2015/12/11 13:30:38 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int		ft_fillit(char *path)
 	if (!(ft_checklistform(begin_form)))
 		return (0);
 	begin_form = ft_initform(begin_form, 0, 0);
-	ft_displayform(begin_form, 0, 0);
+	ft_displaylist(begin_form, 0, 0);
 	return (1);
 }
 

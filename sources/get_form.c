@@ -6,7 +6,7 @@
 /*   By: cchameyr <cchameyr@students.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/08 04:19:27 by cchameyr          #+#    #+#             */
-/*   Updated: 2015/12/11 12:25:37 by cchameyr         ###   ########.fr       */
+/*   Updated: 2015/12/11 14:12:30 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,52 +14,56 @@
 
 t_form	*ft_voidline(t_form *form, int x, int y)
 {
-	while (y < 4)
+	while (x < 4)
 	{
-		while (x < 4)
+		if (form->shape[y][x] == '#')
+			return (form);
+		x++;
+		if (x == 4)
 		{
-			if (form->shape[y][x] == '#')
-				return (form);
-			x++;
-			if (x == 4)
+			y++;
+			while (y < 4)
 			{
-				while (y < 4)
+				x = 0;
+				while (x < 4)
 				{
-					x = 0;
-					y++;
-					while (x++ < 4)
-						form->shape[y - 1][x] = form->shape[y][x];
+					form->shape[y - 1][x] = form->shape[y][x];
+					form->shape[y][x] = '.';
+					x++;
 				}
-				y = 0;
+				y++;
 			}
+			y = 0;
+			x = 0;
 		}
-		y++;
 	}
 	return (NULL);
 }
 
-t_form *ft_voidcolon(t_form * form, int x, int y)
+t_form *ft_voidcolon(t_form *form, int x, int y)
 {
-	while (x < 4)
+	while (y < 4)
 	{
-		while (y < 4)
+		if (form->shape[y][x] == '#')
+			return (form);
+		y++;
+		if (y == 4)
 		{
-			if (form->shape[x][y] == '#')
-				return (form);
-			y++;
-			if (y == 4)
+			x++;
+			while (x < 4)
 			{
-				while (x < 4)
+				y = 0;
+				while (y < 4)
 				{
-					y = 0;
-					x++;
-					while (y++ < 4)
-						form->shape[y][x - 1] = form->shape[y][x];
+					form->shape[y][x - 1] = form->shape[y][x];
+					form->shape[y][x] = '.';
+					y++;
 				}
-				x = 0;
+				x++;
 			}
+			x = 0;
+			y = 0;
 		}
-		x++;
 	}
 	return (NULL);
 }
@@ -71,21 +75,25 @@ t_form	*ft_initform(t_form *begin_form, int x, int y)
 	form = begin_form;
 	while (form)
 	{
+		ft_displayform(form, 0, 0);
 		form = ft_voidline(form, 0, 0);
 		form = ft_voidcolon(form, 0, 0);
+		ft_displayform(form, 0, 0);
 		while (y < 4)
 		{
 			while (x < 4)
 			{
-				if (form->shape[x][y] != '#')
-					form->shape[x][y] = 0;
+				if (form->shape[y][x] != '#')
+					form->shape[y][x] = 0;
 				x++;
 			}
+			x = 0;
 			y++;
 		}
+		y = 0;
 		form = form->next;
 	}
-	return (form);
+	return (begin_form);
 }
 
 t_form	*ft_getform(char *str, int x, int y, int i)

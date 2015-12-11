@@ -6,7 +6,7 @@
 /*   By: aperraul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/07 17:05:29 by aperraul          #+#    #+#             */
-/*   Updated: 2015/12/11 11:13:20 by cchameyr         ###   ########.fr       */
+/*   Updated: 2015/12/11 13:42:32 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include "libft.h"
 
 # define YOLO ft_putstr("\nYOLO\n\n");
-# define PAUSE while(1);
+# define PAUSE while(1){sleep(1000);}
 
 typedef	struct		s_str
 {
@@ -46,6 +46,7 @@ t_str				*ft_freelststr(t_str *begin);
 char				*ft_exportstr(t_str *begin);
 
 t_form				*ft_newform(int index);
-void				ft_displayform(t_form *begin, int x, int y);
+void				ft_displaylist(t_form *begin, int x, int y);
+void				ft_displayform(t_form *form, int x, int y);
 
 #endif
