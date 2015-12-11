@@ -6,11 +6,62 @@
 /*   By: cchameyr <cchameyr@students.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/08 04:19:27 by cchameyr          #+#    #+#             */
-/*   Updated: 2015/12/10 16:36:14 by cchameyr         ###   ########.fr       */
+/*   Updated: 2015/12/11 11:45:22 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
+
+t_form	*ft_voidline(t_form *form, int x, int y)
+{
+	while (y < 4)
+	{
+		while (x < 4)
+		{
+			if (form->shape[y][x] == '#')
+				return (form);
+			x++;
+			if (x == 4)
+			{
+				while (y < 4)
+				{
+					x = 0;
+					y++;
+					while (x++ < 4)
+						form->shape[y - 1][x] = form->shape[y][x];
+				}
+				y = 0;
+			}
+		}
+		y++;
+	}
+}
+
+t_form *ft_voidcolon(t_form * form, int x, int y)
+{
+	while (x < 4)
+	{
+		while (y < 4)
+		{
+			if (form->shape[x][y] == '#')
+				return (form);
+			y++;
+			if ()
+		}
+	}
+}
+
+t_form	*ft_initform(t_form *begin_form)
+{
+	t_form *form;
+
+	form = begin_form;
+	while (form->next)
+	{
+		form = ft_voidline(form, 0, 0);
+		form = ft_voidcolon(form);
+	}
+}
 
 t_form	*ft_getform(char *str, int x, int y, int i)
 {

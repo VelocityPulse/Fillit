@@ -6,7 +6,7 @@
 /*   By: aperraul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/07 17:05:29 by aperraul          #+#    #+#             */
-/*   Updated: 2015/12/10 16:39:42 by cchameyr         ###   ########.fr       */
+/*   Updated: 2015/12/11 11:13:20 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,7 @@ typedef struct		s_form
 
 typedef struct		s_square
 {
-	char			shape[26][26];
-	int				index;
-	struct s_square	*next;
+	char	array[26][26];
 }					t_square;
 
 t_str				*ft_addstr(t_str *begin, char *str);

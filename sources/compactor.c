@@ -6,7 +6,11 @@
 /*   By: aperraul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/08 03:40:04 by aperraul          #+#    #+#             */
+<<<<<<< HEAD
+/*   Updated: 2015/12/11 11:13:38 by cchameyr         ###   ########.fr       */
+=======
 /*   Updated: 2015/12/11 11:44:33 by aperraul         ###   ########.fr       */
+>>>>>>> ff9b0f3770b7ef774307b895bb9239891aa1c331
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +28,9 @@ int				ft_nbform(t_form *form)
 	return (list->index);
 }
 
+<<<<<<< HEAD
+		*ft_min_size(int size)
+=======
 int				ft_min_size(int nbform)
 {
 	int		size;
@@ -35,6 +42,7 @@ int				ft_min_size(int nbform)
 }
 
 t_square		*ft_carre_create(int size)
+>>>>>>> ff9b0f3770b7ef774307b895bb9239891aa1c331
 {
 	int y;
 	t_square	*carre;
@@ -54,7 +62,11 @@ t_square		*ft_carre_create(int size)
 
 t_square		*ft_compact(t_form *form)
 {
+<<<<<<< HEAD
+	t_square	*square;
+=======
 	t_square	*carre;
+>>>>>>> ff9b0f3770b7ef774307b895bb9239891aa1c331
 
 	carre = ft_carre_create(ft_min_size(ft_nbform(form)));
 	while (form->next)
