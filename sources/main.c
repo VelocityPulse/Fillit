@@ -6,7 +6,7 @@
 /*   By: cchameyr <cchameyr@students.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/07 16:26:41 by cchameyr          #+#    #+#             */
-/*   Updated: 2015/12/11 12:11:58 by aperraul         ###   ########.fr       */
+/*   Updated: 2015/12/11 12:23:05 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,16 +32,17 @@ char	*ft_fdcapture(char *path)
 
 int		ft_fillit(char *path)
 {
-	t_form	*list_form;
+	t_form	*begin_form;
 	char	*str;
 
 	if (!(str = ft_fdcapture(path)))
 		return (0);
-	if (!(list_form = ft_getform(str, 0, 0, 0)))
+	if (!(begin_form = ft_getform(str, 0, 0, 0)))
 		return (0);
-	if (!(ft_checklistform(list_form)))
+	if (!(ft_checklistform(begin_form)))
 		return (0);
-	ft_displayform(list_form, 0, 0);
+	begin_form = ft_initform(begin_form, 0, 0);
+	ft_displayform(begin_form, 0, 0);
 	return (1);
 }
 

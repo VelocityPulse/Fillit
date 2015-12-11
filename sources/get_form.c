@@ -6,7 +6,7 @@
 /*   By: cchameyr <cchameyr@students.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/08 04:19:27 by cchameyr          #+#    #+#             */
-/*   Updated: 2015/12/11 12:16:27 by cchameyr         ###   ########.fr       */
+/*   Updated: 2015/12/11 12:25:37 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ t_form	*ft_initform(t_form *begin_form, int x, int y)
 	t_form *form;
 
 	form = begin_form;
-	while (form->next)
+	while (form)
 	{
 		form = ft_voidline(form, 0, 0);
 		form = ft_voidcolon(form, 0, 0);
@@ -83,7 +83,9 @@ t_form	*ft_initform(t_form *begin_form, int x, int y)
 			}
 			y++;
 		}
+		form = form->next;
 	}
+	return (form);
 }
 
 t_form	*ft_getform(char *str, int x, int y, int i)
@@ -113,22 +115,4 @@ t_form	*ft_getform(char *str, int x, int y, int i)
 		}
 	}
 	return (i - (5 * form->index + 1) == (form->index * 16) ? NULL : begin);
-}
-
-char	*ft_fdcapture(char *path)
-{
-	int		fd;
-	char	c;
-	char	*str;
-	t_str	*l_str;
-
-	l_str = NULL;
-	str = NULL;
-	if ((fd = open(path, O_RDONLY)) < 0)
-		return (NULL);
-	while (read(fd, &c, 1))
-		l_str = ft_addc(l_str, c);
-	str = ft_exportstr(l_str);
-	ft_freelststr(l_str);
-	return (str);
 }
