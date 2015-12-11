@@ -5,6 +5,7 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: aperraul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
+
 /*   Created: 2015/12/08 03:40:04 by aperraul          #+#    #+#             */
 /*   Updated: 2015/12/11 12:18:46 by aperraul         ###   ########.fr       */
 /*                                                                            */
@@ -50,6 +51,53 @@ t_square		*ft_carre_create(int size)
 	return (square);
 }
 
+int				ft_checking(t_form *form, t_square *square, int x, int y)
+{
+	int	a;
+	int	b;
+
+	b = 0;
+	while (b++ < 4)
+	{
+		a = 0;
+		while (a++ < 4)
+		{
+			if (square->array[y][x] == '.')
+				x++;
+			else
+			{
+				if (form->shape[b][a] == 0)
+					x++;
+				else 
+					return (0);
+			}
+		}
+		y++;
+	}
+	return (1);
+}
+
+t_square		*ft_applyform(t_square *square, t_form *form, int x, int y)
+{
+	int	a;
+	int b;
+
+	b = 0;
+	while (b < 4)
+	{
+		a = 0;
+		while (a < 4)
+		{
+			square->array[y][x] = form->shape[b][a];
+			a++;
+			x++;
+		}
+		b++;
+		y++;
+	}
+	return (square);
+}
+
 t_square		*ft_compact(t_form *form)
 {
 	int			x;
@@ -66,8 +114,16 @@ t_square		*ft_compact(t_form *form)
 		{
 			x = 0;
 			while (x < size)
+			{
+				if (ft_checking(form, square, x, y))
+				{
+					ft_applyform(square, form, x, y);
+					ft_compact(form->next);
+				}
+				else
+					x++;
+			}
+			y++;
 		}
-		//fonction Put(pour appliquer la piece sur le carre;
-		//
 	}
 }
