@@ -6,7 +6,7 @@
 /*   By: cchameyr <cchameyr@students.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/08 04:19:27 by cchameyr          #+#    #+#             */
-/*   Updated: 2015/12/11 11:45:22 by cchameyr         ###   ########.fr       */
+/*   Updated: 2015/12/11 12:02:31 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,19 @@ t_form *ft_voidcolon(t_form * form, int x, int y)
 			if (form->shape[x][y] == '#')
 				return (form);
 			y++;
-			if ()
+			if (y == 4)
+			{
+				while (x < 4)
+				{
+					y = 0;
+					x++;
+					while (y++ < 4)
+						form->shape[y][x - 1] = form->shape[y][x];
+				}
+				x = 0;
+			}
 		}
+		x++;
 	}
 }
 
@@ -59,7 +70,7 @@ t_form	*ft_initform(t_form *begin_form)
 	while (form->next)
 	{
 		form = ft_voidline(form, 0, 0);
-		form = ft_voidcolon(form);
+		form = ft_voidcolon(form, 0, 0);
 	}
 }
 
