@@ -12,91 +12,89 @@
 
 #include "header.h"
 
-t_form	*ft_voidline(t_form *form, int x, int y)
+t_form	*ft_voidline(t_form *form, t_point pt)
 {
-	while (x < 4)
+	while (pt.x < 4)
 	{
-		if (form->shape[y][x] == '#')
+		if (form->shape[pt.y][pt.x] == '#')
 			return (form);
-		x++;
-		if (x == 4)
+		pt.x++;
+		if (pt.x == 4)
 		{
-			y++;
-			while (y < 4)
+			pt.y++;
+			while (pt.y < 4)
 			{
-				x = 0;
-				while (x < 4)
+				pt.x = 0;
+				while (pt.x < 4)
 				{
-					form->shape[y - 1][x] = form->shape[y][x];
-					form->shape[y][x] = '.';
-					x++;
+					form->shape[pt.y - 1][pt.x] = form->shape[pt.y][pt.x];
+					form->shape[pt.y][pt.x] = '.';
+					pt.x++;
 				}
-				y++;
+				pt.y++;
 			}
-			y = 0;
-			x = 0;
+			pt.y = 0;
+			pt.x = 0;
 		}
 	}
 	return (NULL);
 }
 
-t_form *ft_voidcolon(t_form *form, int x, int y)
+t_form *ft_voidcolon(t_form *form, t_point pt)
 {
-	while (y < 4)
+	while (pt.y < 4)
 	{
-		if (form->shape[y][x] == '#')
+		if (form->shape[pt.y][pt.x] == '#')
 			return (form);
-		y++;
-		if (y == 4)
+		pt.y++;
+		if (pt.y == 4)
 		{
-			x++;
-			while (x < 4)
+			pt.x++;
+			while (pt.x < 4)
 			{
-				y = 0;
-				while (y < 4)
+				pt.y = 0;
+				while (pt.y < 4)
 				{
-					form->shape[y][x - 1] = form->shape[y][x];
-					form->shape[y][x] = '.';
-					y++;
+					form->shape[pt.y][pt.x - 1] = form->shape[pt.y][pt.x];
+					form->shape[pt.y][pt.x] = '.';
+					pt.y++;
 				}
-				x++;
+				pt.x++;
 			}
-			x = 0;
-			y = 0;
+			pt.x = 0;
+			pt.y = 0;
 		}
 	}
 	return (NULL);
 }
 
-t_form	*ft_initform(t_form *begin_form, int x, int y)
+t_form	*ft_initform(t_form *begin_form, t_point pt)
 {
 	t_form *form;
 
 	form = begin_form;
 	while (form)
 	{
-		ft_displayform(form, 0, 0);
-		form = ft_voidline(form, 0, 0);
-		form = ft_voidcolon(form, 0, 0);
-		ft_displayform(form, 0, 0);
-		while (y < 4)
+		form = ft_voidline(form, pt);
+		form = ft_voidcolon(form, pt);
+		while (pt.y < 4)
 		{
-			while (x < 4)
+			while (pt.x < 4)
 			{
-				if (form->shape[y][x] != '#')
-					form->shape[y][x] = 0;
-				x++;
+				if (form->shape[pt.y][pt.x] != '#')
+					form->shape[pt.y][pt.x] = 0;
+				pt.x++;
 			}
-			x = 0;
-			y++;
+			pt.x = 0;
+			pt.y++;
 		}
-		y = 0;
+		pt.y = 0;
 		form = form->next;
 	}
 	return (begin_form);
 }
 
-t_form	*ft_getform(char *str, int x, int y, int i)
+t_form	*ft_getform(char *str, t_point pt, int i)
 {
 	t_form	*form;
 	t_form	*begin;
@@ -105,20 +103,20 @@ t_form	*ft_getform(char *str, int x, int y, int i)
 	form = begin;
 	while (str[i])
 	{
-		x = 0;
-		while (x < 4 && str[i])
+		pt.x = 0;
+		while (pt.x < 4 && str[i])
 		{
-			form->shape[y][x] = str[i];
-			x++;
+			form->shape[pt.y][pt.x] = str[i];
+			pt.x++;
 			i++;
 		}
 		i++;
-		y++;
-		if (y == 4)
+		pt.y++;
+		if (pt.y == 4)
 		{
 			form->next = ft_newform(form->index + 1);
 			form = form->next;
-			y = 0;
+			pt.y = 0;
 			i++;
 		}
 	}

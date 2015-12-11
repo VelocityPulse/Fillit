@@ -14,26 +14,25 @@
 
 int		ft_checkarray(t_form *form)
 {
-	int x;
-	int y;
-	int	sharp;
+	t_point		pt;
+	int			sharp;
 
-	x = 0;
-	y = 0;
+	pt.x = 0;
+	pt.y = 0;
 	sharp = 0;
-	while (y < 4)
+	while (pt.y < 4)
 	{
-		while (x < 4)
+		while (pt.x < 4)
 		{
-			if (form->shape[y][x] != '#' && form->shape[y][x] != '.' &&
-				form->shape[y][x] != '\n')
+			if (form->shape[pt.y][pt.x] != '#' && form->shape[pt.y][pt.x] != '.' &&
+				form->shape[pt.y][pt.x] != '\n')
 				return (0);
-			if (form->shape[y][x] == '#')
+			if (form->shape[pt.y][pt.x] == '#')
 				sharp++;
-			x++;
+			pt.x++;
 		}
-		x = 0;
-		y++;
+		pt.x = 0;
+		pt.y++;
 	}
 	if (sharp == 4)
 		return (1);

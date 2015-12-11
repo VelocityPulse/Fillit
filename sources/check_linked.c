@@ -12,104 +12,105 @@
 
 #include "header.h"
 
-int		ft_checklinkedfirstline(t_form *form, int x, int y)
+int		ft_checklinkedfirstline(t_form *form, t_point pt)
 {
 	int match;
 
 	match = 0;
-	if (x == 0)
+	if (pt.y == 0)
 	{
-		if (form->shape[y + 1][x] == '#')
+		if (form->shape[pt.y + 1][pt.x] == '#')
 			match++;
-		if (form->shape[y][x + 1] == '#')
+		if (form->shape[pt.y][pt.x + 1] == '#')
 			match++;
 	}
-	else if (x > 0)
+	else if (pt.x > 0)
 	{
-		if (form->shape[y + 1][x] == '#')
+		if (form->shape[pt.y + 1][pt.x] == '#')
 			match++;
-		if (form->shape[y][x - 1] == '#')
+		if (form->shape[pt.y][pt.x - 1] == '#')
 			match++;
-		if (form->shape[y][x + 1] == '#')
+		if (form->shape[pt.y][pt.x + 1] == '#')
 			match++;
 	}
 	return (match);
 }
 
-int		ft_checklinkedlastline(t_form *form, int x, int y)
+int		ft_checklinkedlastline(t_form *form, t_point pt)
 {
 	int match;
 
 	match = 0;
-	if (x == 0)
+	if (pt.x == 0)
 	{
-		if (form->shape[y - 1][x] == '#')
+		if (form->shape[pt.y - 1][pt.x] == '#')
 			match++;
-		if (form->shape[y][x + 1] == '#')
+		if (form->shape[pt.y][pt.x + 1] == '#')
 			match++;
 	}
-	else if (x > 0)
+	else if (pt.x > 0)
 	{
-		if (form->shape[y - 1][x] == '#')
+		if (form->shape[pt.y - 1][pt.x] == '#')
 			match++;
-		if (form->shape[y][x + 1] == '#')
+		if (form->shape[pt.y][pt.x + 1] == '#')
 			match++;
-		if (form->shape[y][x - 1] == '#')
+		if (form->shape[pt.y][pt.x - 1] == '#')
 			match++;
 	}
 	return (match);
 }
 
-int		ft_checklinkedmiddle(t_form *form, int x, int y)
+int		ft_checklinkedmiddle(t_form *form, t_point pt)
 {
 	int match;
 
 	match = 0;
-	if (x == 0)
+	if (pt.x == 0)
 	{
-		if (form->shape[y - 1][x] == '#')
+		if (form->shape[pt.y - 1][pt.x] == '#')
 			match++;
-		if (form->shape[y + 1][x] == '#')
+		if (form->shape[pt.y + 1][pt.x] == '#')
 			match++;
-		if (form->shape[y][x + 1] == '#')
+		if (form->shape[pt.y][pt.x + 1] == '#')
 			match++;
 	}
-	else if (x > 0)
+	else if (pt.x > 0)
 	{
-		if (form->shape[y - 1][x] == '#')
+		if (form->shape[pt.y - 1][pt.x] == '#')
 			match++;
-		if (form->shape[y + 1][x] == '#')
+		if (form->shape[pt.y + 1][pt.x] == '#')
 			match++;
-		if (form->shape[y][x - 1] == '#')
+		if (form->shape[pt.y][pt.x - 1] == '#')
 			match++;
-		if (form->shape[y][x + 1] == '#')
+		if (form->shape[pt.y][pt.x + 1] == '#')
 			match++;
 	}
 	return (match);
 }
 
-int		ft_checklinkedform(t_form *form, int x, int y)
+int		ft_checklinkedform(t_form *form)
 {
-	int	match;
+	int			match;
+	t_point		pt;
 
 	match = 0;
-	while (y < 4)
+	while (pt.y < 4)
 	{
-		x = 0;
-		while (x < 4)
+		pt.x = 0;
+		while (pt.x < 4)
 		{
-			if (form->shape[y][x] == '#')
+			if (form->shape[pt.y][pt.x] == '#')
 			{
-				if (y == 0)
-					match += ft_checklinkedfirstline(form, x, y);
-				else if (y == 3)
-					match += ft_checklinkedlastline(form, x, y);
+				if (pt.y == 0)
+					match += ft_checklinkedfirstline(form, pt);
+				else if (pt.y == 3)
+					match += ft_checklinkedlastline(form, pt);
 				else
-					match += ft_checklinkedmiddle(form, x, y);
+					match += ft_checklinkedmiddle(form, pt);
 			}
-			x++;
+			pt.x++;
 		}
-		y++;
+		pt.y++;
 	}
 	
 	if (match == 6 || match == 8)

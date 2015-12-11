@@ -33,19 +33,19 @@ char	*ft_fdcapture(char *path)
 int		ft_fillit(char *path)
 {
 	t_form		*begin_form;
-	t_point		point;
+	t_point		pt;
 	char		*str;
 
-	point.x = 0;
-	point.y = 0;
+	pt.x = 0;
+	pt.y = 0;
 	if (!(str = ft_fdcapture(path)))
 		return (0);
-	if (!(begin_form = ft_getform(str, 0, 0, 0)))
+	if (!(begin_form = ft_getform(str, pt, 0)))
 		return (0);
 	if (!(ft_checklistform(begin_form)))
 		return (0);
-	begin_form = ft_initform(begin_form, 0, 0);
-	ft_displaysquare(ft_compact(begin_form, point, 0));
+	begin_form = ft_initform(begin_form, pt);
+	ft_displaysquare(ft_compact(begin_form, pt, 0));
 	ft_displaylist(begin_form, 0, 0);
 	return (1);
 }

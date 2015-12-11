@@ -22,15 +22,15 @@
 char		*ft_fdcapture(char *path);
 int			ft_fillit(char *path);
 
-t_form		*ft_getform(char *str, int x, int y, int i);
-t_form		*ft_initform(t_form *begin_form, int x, int y);
-t_form		*ft_voidline(t_form *form, int x, int y);
-t_form		*ft_voidcolon(t_form *form, int x, int y);
+t_form		*ft_getform(char *str, t_point pt, int i);
+t_form		*ft_initform(t_form *begin_form, t_point pt);
+t_form		*ft_voidline(t_form *form, t_point pt);
+t_form		*ft_voidcolon(t_form *form, t_point pt);
 
-int			ft_checklinkedform(t_form *form, int x, int y);
-int			ft_checklinkedfirstline(t_form *form, int x, int y);
-int			ft_checklinkedlastline(t_form *form, int x, int y);
-int			ft_checklinkedmiddle(t_form *form, int x, int y);
+int			ft_checklinkedform(t_form *form);
+int			ft_checklinkedfirstline(t_form *form, t_point pt);
+int			ft_checklinkedlastline(t_form *form, t_point pt);
+int			ft_checklinkedmiddle(t_form *form, t_point pt);
 
 int			ft_checkarray(t_form *form);
 int			ft_checklistform(t_form *form);
