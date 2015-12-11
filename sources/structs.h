@@ -6,7 +6,7 @@
 /*   By: aperraul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/07 17:05:29 by aperraul          #+#    #+#             */
-/*   Updated: 2015/12/11 13:42:32 by cchameyr         ###   ########.fr       */
+/*   Updated: 2015/12/11 16:12:44 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,12 @@ typedef struct		s_square
 {
 	char	array[26][26];
 }					t_square;
+
+typedef struct		s_point
+{
+	int				x;
+	int				y;
+}					t_point;
 
 t_str				*ft_addstr(t_str *begin, char *str);
 t_str				*ft_addc(t_str *begin, char c);

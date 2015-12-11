@@ -5,125 +5,82 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: aperraul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-
 /*   Created: 2015/12/08 03:40:04 by aperraul          #+#    #+#             */
-/*   Updated: 2015/12/11 12:18:46 by aperraul         ###   ########.fr       */
+/*   Updated: 2015/12/11 16:48:05 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "structs.h"
+#include "header.h"
 
-int				ft_nbform(t_form *form)
+int				ft_checking(t_form *form, t_square *square, t_point s_pt)
 {
-	t_form	*list;
+	t_point f_pt;
 
-	if (!form)
-		return (0);
-	list = form;
-	while (list->next)
-		list = list->next;
-	return (list->index);
-}
-
-int				ft_min_size(int nbform)
-{
-	int		size;
-
-	size = 2;
-	while (size * size < nbform * 4)
-		size++;
-	return (size);
-}
-
-t_square		*ft_carre_create(int size)
-{
-	int y;
-	t_square	*square;
-
-	if(!(square = (t_square *)malloc(sizeof(t_square) * size)))
-		return (NULL);
-	y = 0;
-	while (y < size)
+	f_pt.y = 0;
+	while (f_pt.y < 4)
 	{
-		ft_memset(square->array[y], '.' ,size);
-		y++;
-	}
-	return (square);
-}
-
-int				ft_checking(t_form *form, t_square *square, int x, int y)
-{
-	int	a;
-	int	b;
-
-	b = 0;
-	while (b++ < 4)
-	{
-		a = 0;
-		while (a++ < 4)
+		f_pt.x = 0;
+		while (f_pt.x < 4)
 		{
-			if (square->array[y][x] == '.')
-				x++;
-			else
+			if (form->share[f_pt.y][f_pt.x] == '#')
 			{
-				if (form->shape[b][a] == 0)
-					x++;
-				else 
-					return (0);
+				if (ft_checkarea())
 			}
 		}
-		y++;
 	}
-	return (1);
 }
 
-t_square		*ft_applyform(t_square *square, t_form *form, int x, int y)
+t_square		*ft_applyform(t_square *square, t_form *form, t_point s_pt)
 {
-	int	a;
-	int b;
-
-	b = 0;
-	while (b < 4)
+	t_point f_pt;
+	
+	f_pt.y = 0;
+	while (f_pt.x < 4)
 	{
-		a = 0;
-		while (a < 4)
+		f_pt.x = 0;
+		while (f_pt.x < 4)
 		{
-			square->array[y][x] = form->shape[b][a];
-			a++;
-			x++;
+			square->array[s_pt.y][s_pt.x] = form->shape[f_pt.y][f_pt.x];
+			f_pt.x++;
+			s_pt.x++;
 		}
-		b++;
-		y++;
+		f_pt.y++;
+		s_pt.y++;
 	}
 	return (square);
 }
 
-t_square		*ft_compact(t_form *form)
+t_square		*ft_compact(t_form *form, t_point s_pt, int size)
 {
-	int			x;
-	int			y;
 	t_square	*square;
-	int			size;
 
-	size = ft_min_size(ft_nbform(form));
-	square = ft_carre_create(size);
+	size = ft_minsize(ft_cptform(form));
+	square = ft_initsquare(size);
 	while (form->next)
 	{
-		y = 0;
-		while (y < size)
+		while (s_pt.y < size)
 		{
-			x = 0;
-			while (x < size)
+			while (s_pt.x < size)
 			{
-				if (ft_checking(form, square, x, y))
+				if (ft_checking(form, square, s_pt))
 				{
-					ft_applyform(square, form, x, y);
-					ft_compact(form->next);
+					square = ft_applyform(square, form, s_pt);
+					if (s_pt.x < size)
+					{
+						s_pt.x++;
+						square = ft_compact(form->next, s_pt, size);
+					}
+					else
+					{
+						s_pt.x = 0;
+						s_pt.y++;
+						square = ft_compact(form->next, s_pt, size);
+					}
 				}
 				else
-					x++;
+					s_pt.x++;
 			}
-			y++;
+			s_pt.y++;
 		}
 	}
 }
