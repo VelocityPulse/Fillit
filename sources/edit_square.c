@@ -50,3 +50,18 @@ t_square	*ft_initsquare(int size)
 	return (square);
 }
 
+void		ft_displaysquare(t_square *sqr, int x, int y, int size)
+{
+	ft_putchar('\n');
+	while (y < size)
+	{
+		x = 0;
+		while (x < size)
+		{
+			ft_putchar(sqr->array[y][x]);
+			x++;
+		}
+		ft_putchar('\n');
+		y++;
+	}
+}
