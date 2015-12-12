@@ -49,20 +49,14 @@ int		ft_checklistform(t_form *list_form)
 	form = list_form;
 	while (form)
 	{
-		ft_putnbr((int)form);
-		ft_putchar(' ');
 		if (ft_checkarray(form, pt))
 		{
 			if (!(ft_checklinkedform(form, pt)))
 				return (0);
 		}
 		else
-		{
-			YOLO
 			return (0);
-		}
 		form = form->next;
-		// erreur ici (le 7 iem mailon ne devrait pas exister)
 	}
 	return (1);
 }

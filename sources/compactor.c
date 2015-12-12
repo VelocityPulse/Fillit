@@ -22,7 +22,7 @@ int				ft_checking(t_form *form, t_square *square, t_point s_pt)
 		f_pt.x = 0;
 		while (f_pt.x < 4)
 		{
-			if (form->share[f_pt.y][f_pt.x] == '#')
+			if (form->shape[f_pt.y][f_pt.x] == '#')
 			{
 				if (ft_checkarea())
 			}

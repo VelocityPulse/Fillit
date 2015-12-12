@@ -69,7 +69,7 @@ void	ft_displayform(t_form *form, int x, int y)
 			if (form->shape[y][x] == '#')
 				ft_putchar(form->index + 64);
 			else
-				ft_putchar(' ');
+				ft_putchar('.');
 			x++;
 		}
 		y++;
