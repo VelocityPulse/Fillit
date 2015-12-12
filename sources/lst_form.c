@@ -6,7 +6,7 @@
 /*   By: aperraul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/08 04:04:30 by aperraul          #+#    #+#             */
-/*   Updated: 2015/12/11 14:06:08 by cchameyr         ###   ########.fr       */
+/*   Updated: 2015/12/12 12:33:11 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	ft_displaylist(t_form *begin, int x, int y)
 				if (list->shape[y][x] == '#')
 					ft_putchar(list->index + 64);
 				else
-					ft_putchar(list->shape[y][x]);
+					ft_putchar('.'/*list->shape[y][x]*/);
 				x++;
 			}
 			y++;
