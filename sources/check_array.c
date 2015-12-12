@@ -12,26 +12,24 @@
 
 #include "header.h"
 
-int		ft_checkarray(t_form *form)
+int		ft_checkarray(t_form *form, t_point pt)
 {
-	t_point		pt;
-	int			sharp;
+	int		sharp;
 
-	pt.x = 0;
-	pt.y = 0;
 	sharp = 0;
 	while (pt.y < 4)
 	{
+		pt.x = 0;
 		while (pt.x < 4)
 		{
-			if (form->shape[pt.y][pt.x] != '#' && form->shape[pt.y][pt.x] != '.' &&
+			if (form->shape[pt.y][pt.x] != '#' &&
+				form->shape[pt.y][pt.x] != '.' &&
 				form->shape[pt.y][pt.x] != '\n')
 				return (0);
 			if (form->shape[pt.y][pt.x] == '#')
 				sharp++;
 			pt.x++;
 		}
-		pt.x = 0;
 		pt.y++;
 	}
 	if (sharp == 4)
@@ -42,25 +40,29 @@ int		ft_checkarray(t_form *form)
 int		ft_checklistform(t_form *list_form)
 {
 	t_form *form;
+	t_point pt;
 
+	pt.x = 0;
+	pt.y = 0;
 	if (!list_form)
-		return 0;
+		return (0);
 	form = list_form;
-	while (form->next)
+	while (form)
 	{
-		if (ft_checkarray(form))
+		ft_putnbr((int)form);
+		ft_putchar(' ');
+		if (ft_checkarray(form, pt))
 		{
-			if (!(ft_checklinkedform(form, 0, 0)))
+			if (!(ft_checklinkedform(form, pt)))
 				return (0);
 		}
 		else
+		{
+			YOLO
 			return (0);
+		}
 		form = form->next;
-	}
-	if (ft_checkarray(form))
-	{
-		if (!(ft_checklinkedform(form, 0, 0)))
-			return (0);
+		// erreur ici (le 7 iem mailon ne devrait pas exister)
 	}
 	return (1);
 }

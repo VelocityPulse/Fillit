@@ -27,12 +27,12 @@ t_form		*ft_initform(t_form *begin_form, t_point pt);
 t_form		*ft_voidline(t_form *form, t_point pt);
 t_form		*ft_voidcolon(t_form *form, t_point pt);
 
-int			ft_checklinkedform(t_form *form);
+int			ft_checklinkedform(t_form *form, t_point pt);
 int			ft_checklinkedfirstline(t_form *form, t_point pt);
 int			ft_checklinkedlastline(t_form *form, t_point pt);
 int			ft_checklinkedmiddle(t_form *form, t_point pt);
 
-int			ft_checkarray(t_form *form);
+int			ft_checkarray(t_form *form, t_point pt);
 int			ft_checklistform(t_form *form);
 
 int			ft_cptform(t_form *form);

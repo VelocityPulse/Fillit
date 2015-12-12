@@ -17,7 +17,7 @@ int		ft_checklinkedfirstline(t_form *form, t_point pt)
 	int match;
 
 	match = 0;
-	if (pt.y == 0)
+	if (pt.x == 0)
 	{
 		if (form->shape[pt.y + 1][pt.x] == '#')
 			match++;
@@ -88,10 +88,9 @@ int		ft_checklinkedmiddle(t_form *form, t_point pt)
 	return (match);
 }
 
-int		ft_checklinkedform(t_form *form)
+int		ft_checklinkedform(t_form *form, t_point pt)
 {
 	int			match;
-	t_point		pt;
 
 	match = 0;
 	while (pt.y < 4)
@@ -112,7 +111,6 @@ int		ft_checklinkedform(t_form *form)
 		}
 		pt.y++;
 	}
-	
 	if (match == 6 || match == 8)
 		return (1);
 	return (0);

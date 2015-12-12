@@ -116,6 +116,7 @@ t_form	*ft_getform(char *str, t_point pt, int i)
 		{
 			form->next = ft_newform(form->index + 1);
 			form = form->next;
+			form->next = NULL;
 			pt.y = 0;
 			i++;
 		}

@@ -45,7 +45,7 @@ int		ft_fillit(char *path)
 	if (!(ft_checklistform(begin_form)))
 		return (0);
 	begin_form = ft_initform(begin_form, pt);
-	ft_displaysquare(ft_compact(begin_form, pt, 0));
+//	ft_displaysquare(ft_compact(begin_form, pt, 0));
 	ft_displaylist(begin_form, 0, 0);
 	return (1);
 }

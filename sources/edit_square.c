@@ -21,7 +21,7 @@ int			ft_cptform(t_form *form)
 	list = form;
 	while (list->next)
 		list = list->next;
-	return (list->next);
+	return (list->index);
 }
 
 int			ft_minsize(int nbform)
@@ -44,7 +44,7 @@ t_square	*ft_initsquare(int size)
 	y = 0;
 	while (y < size)
 	{
-		ft_memeset(square->array[y], '.', size);
+		ft_memset(square->array[y], '.', size);
 		y++;
 	}
 	return (square);
