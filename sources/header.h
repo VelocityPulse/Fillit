@@ -6,7 +6,7 @@
 /*   By: cchameyr <cchameyr@students.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/07 17:07:11 by cchameyr          #+#    #+#             */
-/*   Updated: 2015/12/11 16:45:04 by cchameyr         ###   ########.fr       */
+/*   Updated: 2015/12/12 12:47:20 by aperraul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,8 @@ int			ft_checklistform(t_form *form);
 int			ft_cptform(t_form *form);
 int			ft_minsize(int nbform);
 t_square	*ft_initsquare(int size);
-int			ft_checking(t_form *form, t_square *square, t_point s_pt);
+int			ft_checkarea(t_point f_pt, t_point s_pt, int size);
+int			ft_checking(t_form *form, t_square *square, t_point s_pt, int size);
 t_square	*ft_applyform(t_square *square, t_form *form, t_point s_pt);
 t_square	*ft_compact(t_form *form, t_point s_pt, int size);
 
