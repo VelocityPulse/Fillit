@@ -35,6 +35,8 @@ int		ft_fillit(char *path)
 	t_form		*begin_form;
 	t_point		pt;
 	char		*str;
+	int 		size;
+	t_square	*sqr;
 
 	pt.x = 0;
 	pt.y = 0;
@@ -45,6 +47,11 @@ int		ft_fillit(char *path)
 	if (!(ft_checklistform(begin_form)))
 		return (0);
 	begin_form = ft_initform(begin_form, pt);
+	size = ft_minsize(ft_cptform(begin_form));
+	sqr = ft_initsquare(size);
+	while (!(sqr = ft_compact(sqr, begin_form, pt, size)))
+		size++;
+	YOLO
 //	ft_displaysquare(ft_compact(begin_form, pt, 0));
 	ft_displaylist(begin_form, 0, 0);
 	return (1);

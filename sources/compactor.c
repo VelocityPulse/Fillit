@@ -71,25 +71,22 @@ t_square	*ft_applyform(t_square *square, t_form *form, t_point s_pt)
 	return (square);
 }
 
-t_square	*ft_compact(t_square sqr, t_form *form, t_point s_pt, int size)
+t_square	*ft_compact(t_square *sqr, t_form *form, t_point s_pt, int size)
 {
-	size = ft_minsize(ft_cptform(form));
-	sqr = ft_initsquare(size);
-	s_pt.y = 0;
 	if (form)
 	{
+		s_pt.y = 0;
 		while (s_pt.y < size)
 		{
 			s_pt.x = 0;
 			while (s_pt.x < size)
 			{
-
 				if (ft_checking(form, sqr, s_pt, size))
 				{
 					if (!(form->next))
 						return (ft_applyform(sqr, form, s_pt));
-					else
-						sqr = ft_compact(ft_applyform(sqr, form, s_pt), form->next, s_pt, size);
+					else if ((sqr = ft_compact(ft_applyform(sqr, form, s_pt), form->next, s_pt, size)))
+						return (sqr);
 				}
 				else
 					s_pt.x++;

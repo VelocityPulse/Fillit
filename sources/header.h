@@ -42,6 +42,6 @@ t_square	*ft_initsquare(int size);
 int			ft_checkarea(t_square *sqr, t_point f_pt, t_point s_pt, int size);
 int			ft_checking(t_form *form, t_square *square, t_point s_pt, int size);
 t_square	*ft_applyform(t_square *square, t_form *form, t_point s_pt);
-t_square	*ft_compact(t_form *form, t_point s_pt, int size);
+t_square	*ft_compact(t_square *sqr, t_form *form, t_point s_pt, int size);
 
 #endif
