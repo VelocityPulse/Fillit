@@ -48,12 +48,14 @@ int		ft_fillit(char *path)
 		return (0);
 	begin_form = ft_initform(begin_form, pt);
 	size = ft_minsize(ft_cptform(begin_form));
+	ft_putnbr(size);
+	ft_putchar('\n');
 //	ft_displaysquare(sqr, 0, 0, size);
 //	ft_compact(ft_initsquare(size), begin_form, pt, size);
 	while (!(sqr = ft_compact(ft_initsquare(size), begin_form, pt, size)))
 		size++;
-//	ft_displaysquare(ft_compact(begin_form, pt, 0));
-	ft_displaylist(begin_form, 0, 0);
+	ft_putstr("\n-------------------------------------\n");
+	ft_displaysquare(sqr, 0, 0, size);
 	return (1);
 }
 

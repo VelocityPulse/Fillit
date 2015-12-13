@@ -47,6 +47,7 @@ t_square	*ft_initsquare(int size)
 		ft_memset(square->array[y], '.', size);
 		y++;
 	}
+	square->fault = 0;
 	return (square);
 }
 
@@ -64,4 +65,5 @@ void		ft_displaysquare(t_square *sqr, int x, int y, int size)
 		ft_putchar('\n');
 		y++;
 	}
+	ft_putchar('\n');
 }

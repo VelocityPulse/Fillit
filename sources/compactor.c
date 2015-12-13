@@ -87,15 +87,16 @@ t_square	*ft_applyform(t_square *square, t_form *form, t_point s_pt)
 		s_pt.y++;
 		s_pt.x = (unsigned int)(s_pt.x - f_pt.x);
 	}
+	ft_displaysquare(square, 0, 0, 7);
 	return (square);
 }
 
 t_square	*ft_compact(t_square *sqr, t_form *form, t_point s_pt, int size)
 {
-	ft_putstr("\n-----------\n");
+	t_square temp;
+
 	if (form)
 	{
-		ft_displaysquare(sqr, 0, 0, size);
 		s_pt.y = 0;
 		while (s_pt.y < size)
 		{
@@ -106,21 +107,24 @@ t_square	*ft_compact(t_square *sqr, t_form *form, t_point s_pt, int size)
 				{
 					if (!(form->next))
 						return (ft_applyform(sqr, form, s_pt));
+					sqr->fault = 0;
+					temp = *sqr;
 					sqr = ft_compact(ft_applyform(sqr, form, s_pt), form->next, s_pt, size);
-					if (sqr == NULL)
-						return (NULL);
+					if (sqr->fault == 1)
+						sqr = &temp;
 					else
 						return (sqr);
 				}
-				else
-					s_pt.x++;
+				s_pt.x++;
 			}
 			s_pt.y++;
 		}
 	}
-	ft_putstr("ENFIN");
-	free(sqr);
 	if (form->index == 1)
+	{
+//		free(sqr);
 		return (NULL);
-	return (NULL);
+	}
+	sqr->fault = 1;
+	return (sqr);
 }
