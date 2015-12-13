@@ -37,6 +37,9 @@ typedef struct		s_square
 {
 	char			array[26][26];
 	int				fault;
+	int				size;
+	int				sizeout;
+	int				error;
 }					t_square;
 
 typedef struct		s_point

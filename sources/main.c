@@ -36,7 +36,7 @@ int		ft_fillit(char *path)
 	t_point		pt;
 	char		*str;
 	int 		size;
-	t_square	*sqr;
+	t_square	sqr;
 
 	pt.x = 0;
 	pt.y = 0;
@@ -47,15 +47,20 @@ int		ft_fillit(char *path)
 	if (!(ft_checklistform(begin_form)))
 		return (0);
 	begin_form = ft_initform(begin_form, pt);
-	size = ft_minsize(ft_cptform(begin_form));
+	sqr.size = ft_minsize(ft_cptform(begin_form));
 	ft_putnbr(size);
 	ft_putchar('\n');
-//	ft_displaysquare(sqr, 0, 0, size);
-//	ft_compact(ft_initsquare(size), begin_form, pt, size);
-	while (!(sqr = ft_compact(ft_initsquare(size), begin_form, pt, size)))
-		size++;
+	sqr.sizeout = 1;
+	while (sqr.sizeout == 1)
+	{
+		sqr = ft_compact(ft_initsqr(sqr.size), begin_form, pt, sqr.size);
+		if (sqr.sizeout == 1)
+			sqr.size++;
+		if (sqr.error == 1)
+			return (0); // a rentrera toujours ? si a rentre pas size++ ? sqr.error inutile ?
+	}
 	ft_putstr("\n-------------------------------------\n");
-	ft_displaysquare(sqr, 0, 0, size);
+	ft_displaysquare(sqr, 0, 0, sqr.size);
 	return (1);
 }
 

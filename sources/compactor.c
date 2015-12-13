@@ -13,30 +13,16 @@
 #include "header.h"
 
 
-#include <stdio.h>
 
-
-int			ft_checkarea(t_square *sqr, t_point f_pt, t_point s_pt, int size)
+int			ft_checkarea(t_square sqr, t_point f_pt, t_point s_pt, int size)
 {
-//	ft_putchar('-');
-//	ft_putnbr(size);
-//	ft_putchar('-');
-//	printf("\nx : %d + %d = %d\ny : %d + %d = %d\n", f_pt.x, s_pt.x, f_pt.x + s_pt.x, f_pt.y, s_pt.y, f_pt.y + 		s_pt.y);
-//	if (sqr->array[s_pt.y][s_pt.x] == '.')
-//		ft_putstr("[.]\n");
-//	else
-///		ft_putstr("[ ]\n");
 	if ((s_pt.x < size) && (s_pt.y < size) &&
-			sqr->array[s_pt.y][s_pt.x] == '.')
-		{
-//			ft_putstr("ok\n");
+			sqr.array[s_pt.y][s_pt.x] == '.')
 			return (1);
-		}
-//	ft_putstr("false\n");
 	return (0);
 }
 
-int			ft_checking(t_form *form, t_square *square, t_point s_pt, int size)
+int			ft_checking(t_form *form, t_square square, t_point s_pt, int size)
 {
 	t_point f_pt;
 
@@ -49,9 +35,7 @@ int			ft_checking(t_form *form, t_square *square, t_point s_pt, int size)
 			if (form->shape[f_pt.y][f_pt.x] == '#')
 			{
 				if (!ft_checkarea(square, f_pt, s_pt, size))
-				{
 					return (0);
-				}
 				f_pt.x++;
 				s_pt.x++;
 			}
@@ -68,7 +52,7 @@ int			ft_checking(t_form *form, t_square *square, t_point s_pt, int size)
 	return (1);
 }
 
-t_square	*ft_applyform(t_square *square, t_form *form, t_point s_pt)
+t_square	ft_applyform(t_square square, t_form *form, t_point s_pt)
 {
 	t_point f_pt;
 
@@ -79,7 +63,7 @@ t_square	*ft_applyform(t_square *square, t_form *form, t_point s_pt)
 		while (f_pt.x < 4)
 		{
 			if (form->shape[f_pt.y][f_pt.x] == '#')
-				square->array[s_pt.y][s_pt.x] = form->index + 64;
+				square.array[s_pt.y][s_pt.x] = form->index + 64;
 			f_pt.x++;
 			s_pt.x++;
 		}
@@ -91,7 +75,7 @@ t_square	*ft_applyform(t_square *square, t_form *form, t_point s_pt)
 	return (square);
 }
 
-t_square	*ft_compact(t_square *sqr, t_form *form, t_point s_pt, int size)
+t_square	ft_compact(t_square sqr, t_form *form, t_point s_pt, int size)
 {
 	t_square temp;
 
@@ -107,11 +91,11 @@ t_square	*ft_compact(t_square *sqr, t_form *form, t_point s_pt, int size)
 				{
 					if (!(form->next))
 						return (ft_applyform(sqr, form, s_pt));
-					sqr->fault = 0;
-					temp = *sqr;
+					sqr.fault = 0;
+					temp = sqr;
 					sqr = ft_compact(ft_applyform(sqr, form, s_pt), form->next, s_pt, size);
-					if (sqr->fault == 1)
-						sqr = &temp;
+					if (sqr.fault == 1)
+						sqr = temp;
 					else
 						return (sqr);
 				}
@@ -122,9 +106,9 @@ t_square	*ft_compact(t_square *sqr, t_form *form, t_point s_pt, int size)
 	}
 	if (form->index == 1)
 	{
-//		free(sqr);
-		return (NULL);
+		sqr.sizeout = 1;
+		return (sqr);
 	}
-	sqr->fault = 1;
+	sqr.fault = 1;
 	return (sqr);
 }

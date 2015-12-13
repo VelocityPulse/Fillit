@@ -34,24 +34,25 @@ int			ft_minsize(int nbform)
 	return (size);
 }
 
-t_square	*ft_initsquare(int size)
+t_square	ft_initsqr(int size)
 {
 	int y;
-	t_square	*square;
+	t_square	sqr;
 
-	if (!(square = (t_square *)malloc(sizeof(t_square))))
-		return (NULL);
 	y = 0;
 	while (y < size)
 	{
-		ft_memset(square->array[y], '.', size);
+		ft_memset(sqr.array[y], '.', size);
 		y++;
 	}
-	square->fault = 0;
-	return (square);
+	sqr.fault = 0;
+	sqr.size = size;
+	sqr.error = 0;
+	sqr.sizeout = 0;
+	return (sqr);
 }
 
-void		ft_displaysquare(t_square *sqr, int x, int y, int size)
+void		ft_displaysquare(t_square sqr, int x, int y, int size)
 {
 	ft_putchar('\n');
 	while (y < size)
@@ -59,7 +60,7 @@ void		ft_displaysquare(t_square *sqr, int x, int y, int size)
 		x = 0;
 		while (x < size)
 		{
-			ft_putchar(sqr->array[y][x]);
+			ft_putchar(sqr.array[y][x]);
 			x++;
 		}
 		ft_putchar('\n');
