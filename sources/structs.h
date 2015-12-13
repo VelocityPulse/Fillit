@@ -16,7 +16,7 @@
 # include <stdlib.h>
 # include "libft.h"
 
-# define YOLO ft_putstr("\nYOLO\n\n");
+# define YOLO ft_putstr("\nYOLO\n");
 # define PAUSE while(1){sleep(1000);}
 
 typedef	struct		s_str

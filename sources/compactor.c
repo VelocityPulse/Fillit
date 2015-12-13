@@ -63,6 +63,7 @@ int			ft_checking(t_form *form, t_square *square, t_point s_pt, int size)
 		}
 		f_pt.y++;
 		s_pt.y++;
+		s_pt.x = (unsigned int)(s_pt.x - f_pt.x);
 	}
 	return (1);
 }
@@ -78,7 +79,7 @@ t_square	*ft_applyform(t_square *square, t_form *form, t_point s_pt)
 		while (f_pt.x < 4)
 		{
 			if (form->shape[f_pt.y][f_pt.x] == '#')
-				square->array[s_pt.y][s_pt.x] = form->shape[f_pt.y][f_pt.x];
+				square->array[s_pt.y][s_pt.x] = form->index + 64;
 			f_pt.x++;
 			s_pt.x++;
 		}
@@ -91,9 +92,9 @@ t_square	*ft_applyform(t_square *square, t_form *form, t_point s_pt)
 
 t_square	*ft_compact(t_square *sqr, t_form *form, t_point s_pt, int size)
 {
+	ft_putstr("\n-----------\n");
 	if (form)
 	{
-		ft_putstr("----\n");
 		ft_displaysquare(sqr, 0, 0, size);
 		s_pt.y = 0;
 		while (s_pt.y < size)
@@ -105,7 +106,10 @@ t_square	*ft_compact(t_square *sqr, t_form *form, t_point s_pt, int size)
 				{
 					if (!(form->next))
 						return (ft_applyform(sqr, form, s_pt));
-					else if ((sqr = ft_compact(ft_applyform(sqr, form, s_pt), form->next, s_pt, size)))
+					sqr = ft_compact(ft_applyform(sqr, form, s_pt), form->next, s_pt, size);
+					if (sqr == NULL)
+						return (NULL);
+					else
 						return (sqr);
 				}
 				else
@@ -114,6 +118,8 @@ t_square	*ft_compact(t_square *sqr, t_form *form, t_point s_pt, int size)
 			s_pt.y++;
 		}
 	}
+	ft_putstr("ENFIN");
+	free(sqr);
 	if (form->index == 1)
 		return (NULL);
 	return (NULL);

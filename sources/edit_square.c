@@ -39,7 +39,7 @@ t_square	*ft_initsquare(int size)
 	int y;
 	t_square	*square;
 
-	if (!(square = (t_square *)malloc(sizeof(t_square) * size)))
+	if (!(square = (t_square *)malloc(sizeof(t_square))))
 		return (NULL);
 	y = 0;
 	while (y < size)
