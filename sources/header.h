@@ -40,9 +40,9 @@ int			ft_minsize(int nbform);
 t_square	ft_initsqr(int size);
 void		ft_displaysquare(t_square sqr, int x, int y, int size);
 
-int			ft_checkarea(t_square sqr, t_point f_pt, t_point s_pt, int size);
-int			ft_checking(t_form *form, t_square square, t_point s_pt, int size);
-t_square	ft_applyform(t_square square, t_form *form, t_point s_pt);
-t_square	ft_compact(t_square sqr, t_form *form, t_point s_pt, int size);
+int			ft_checkarea(t_square sqr, t_point f_pt, t_point s_pt);
+int			ft_checking(t_form *form, t_square sqr, t_point s_pt);
+t_square	ft_apf(t_square square, t_form *form, t_point s_pt);
+t_square	ft_compct(t_square sqr, t_form *form, t_point s_pt);
 
 #endif

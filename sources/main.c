@@ -35,7 +35,6 @@ int		ft_fillit(char *path)
 	t_form		*begin_form;
 	t_point		pt;
 	char		*str;
-	int 		size;
 	t_square	sqr;
 
 	pt.x = 0;
@@ -48,12 +47,12 @@ int		ft_fillit(char *path)
 		return (0);
 	begin_form = ft_initform(begin_form, pt);
 	sqr.size = ft_minsize(ft_cptform(begin_form));
-	ft_putnbr(size);
+	ft_putnbr(sqr.size);
 	ft_putchar('\n');
 	sqr.sizeout = 1;
 	while (sqr.sizeout == 1)
 	{
-		sqr = ft_compact(ft_initsqr(sqr.size), begin_form, pt, sqr.size);
+		sqr = ft_compct(ft_initsqr(sqr.size), begin_form, pt);
 		if (sqr.sizeout == 1)
 			sqr.size++;
 		if (sqr.error == 1)

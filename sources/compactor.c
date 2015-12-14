@@ -14,15 +14,15 @@
 
 
 
-int			ft_checkarea(t_square sqr, t_point f_pt, t_point s_pt, int size)
+int			ft_checkarea(t_square sqr, t_point f_pt, t_point s_pt)
 {
-	if ((s_pt.x < size) && (s_pt.y < size) &&
+	if ((s_pt.x < sqr.size) && (s_pt.y < sqr.size) &&
 			sqr.array[s_pt.y][s_pt.x] == '.')
 			return (1);
 	return (0);
 }
 
-int			ft_checking(t_form *form, t_square square, t_point s_pt, int size)
+int			ft_checking(t_form *form, t_square sqr, t_point s_pt)
 {
 	t_point f_pt;
 
@@ -34,7 +34,7 @@ int			ft_checking(t_form *form, t_square square, t_point s_pt, int size)
 		{
 			if (form->shape[f_pt.y][f_pt.x] == '#')
 			{
-				if (!ft_checkarea(square, f_pt, s_pt, size))
+				if (!ft_checkarea(sqr, f_pt, s_pt))
 					return (0);
 				f_pt.x++;
 				s_pt.x++;
@@ -52,7 +52,7 @@ int			ft_checking(t_form *form, t_square square, t_point s_pt, int size)
 	return (1);
 }
 
-t_square	ft_applyform(t_square square, t_form *form, t_point s_pt)
+t_square	ft_apf(t_square square, t_form *form, t_point s_pt)
 {
 	t_point f_pt;
 
@@ -75,25 +75,25 @@ t_square	ft_applyform(t_square square, t_form *form, t_point s_pt)
 	return (square);
 }
 
-t_square	ft_compact(t_square sqr, t_form *form, t_point s_pt, int size)
+t_square	ft_compct(t_square sqr, t_form *form, t_point s_pt)
 {
 	t_square temp;
 
 	if (form)
 	{
 		s_pt.y = 0;
-		while (s_pt.y < size)
+		while (s_pt.y < sqr.size)
 		{
 			s_pt.x = 0;
-			while (s_pt.x < size)
+			while (s_pt.x < sqr.size)
 			{
-				if (ft_checking(form, sqr, s_pt, size))
+				if (ft_checking(form, sqr, s_pt))
 				{
 					if (!(form->next))
-						return (ft_applyform(sqr, form, s_pt));
+						return (ft_apf(sqr, form, s_pt));
 					sqr.fault = 0;
 					temp = sqr;
-					sqr = ft_compact(ft_applyform(sqr, form, s_pt), form->next, s_pt, size);
+					sqr = ft_compct(ft_apf(sqr, form, s_pt), form->next, s_pt);
 					if (sqr.fault == 1)
 						sqr = temp;
 					else
