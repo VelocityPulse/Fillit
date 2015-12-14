@@ -6,7 +6,7 @@
 /*   By: cchameyr <cchameyr@students.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/07 17:07:11 by cchameyr          #+#    #+#             */
-/*   Updated: 2015/12/12 13:37:26 by aperraul         ###   ########.fr       */
+/*   Updated: 2015/12/14 15:27:11 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ void		ft_displaysquare(t_square sqr, int x, int y, int size);
 int			ft_checkarea(t_square sqr, t_point f_pt, t_point s_pt);
 int			ft_checking(t_form *form, t_square sqr, t_point s_pt);
 t_square	ft_apf(t_square square, t_form *form, t_point s_pt);
+t_square	ft_backtrack(t_square sqr, t_form *form, t_point s_pt);
 t_square	ft_compct(t_square sqr, t_form *form, t_point s_pt);
 
 #endif
