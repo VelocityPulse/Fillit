@@ -6,11 +6,11 @@
 /*   By: cchameyr <cchameyr@students.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/08 04:19:27 by cchameyr          #+#    #+#             */
-/*   Updated: 2015/12/14 15:03:52 by cchameyr         ###   ########.fr       */
+/*   Updated: 2015/12/14 15:57:53 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "header.h"
+#include "../headers/header.h"
 
 t_form		*ft_voidline(t_form *form, t_point pt)
 {

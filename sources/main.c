@@ -6,11 +6,11 @@
 /*   By: cchameyr <cchameyr@students.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/07 16:26:41 by cchameyr          #+#    #+#             */
-/*   Updated: 2015/12/14 15:04:16 by cchameyr         ###   ########.fr       */
+/*   Updated: 2015/12/14 16:00:45 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "header.h"
+#include "../headers/header.h"
 
 char	*ft_fdcapture(char *path)
 {

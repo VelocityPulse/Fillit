@@ -6,13 +6,13 @@
 /*   By: aperraul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/08 03:40:04 by aperraul          #+#    #+#             */
-/*   Updated: 2015/12/14 15:45:09 by cchameyr         ###   ########.fr       */
+/*   Updated: 2015/12/14 16:48:51 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "header.h"
+#include "../headers/header.h"
 
-int			ft_checkarea(t_square sqr, t_point f_pt, t_point s_pt)
+int			ft_checkarea(t_square sqr, t_point s_pt)
 {
 	if ((s_pt.x < sqr.size) && (s_pt.y < sqr.size) &&
 			sqr.array[s_pt.y][s_pt.x] == '.')
@@ -32,7 +32,7 @@ int			ft_checking(t_form *form, t_square sqr, t_point s_pt)
 		{
 			if (form->shape[f_pt.y][f_pt.x] == '#')
 			{
-				if (!ft_checkarea(sqr, f_pt, s_pt))
+				if (!ft_checkarea(sqr, s_pt))
 					return (0);
 				s_pt.x++;
 			}

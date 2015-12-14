@@ -6,11 +6,11 @@
 /*   By: cchameyr <cchameyr@students.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/08 07:21:07 by cchameyr          #+#    #+#             */
-/*   Updated: 2015/12/14 14:27:32 by aperraul         ###   ########.fr       */
+/*   Updated: 2015/12/14 16:48:14 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "header.h"
+#include "../headers/header.h"
 
 int		ft_checkarray(t_form *form, t_point pt)
 {

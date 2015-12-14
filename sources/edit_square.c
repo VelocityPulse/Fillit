@@ -6,11 +6,11 @@
 /*   By: cchameyr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/11 15:20:46 by cchameyr          #+#    #+#             */
-/*   Updated: 2015/12/14 14:28:04 by aperraul         ###   ########.fr       */
+/*   Updated: 2015/12/14 16:04:31 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "header.h"
+#include "../headers/header.h"
 
 int			ft_cptform(t_form *form)
 {
@@ -54,7 +54,6 @@ t_square	ft_initsqr(int size)
 
 void		ft_displaysquare(t_square sqr, int x, int y, int size)
 {
-	ft_putchar('\n');
 	while (y < size)
 	{
 		x = 0;
@@ -66,5 +65,4 @@ void		ft_displaysquare(t_square sqr, int x, int y, int size)
 		ft_putchar('\n');
 		y++;
 	}
-	ft_putchar('\n');
 }

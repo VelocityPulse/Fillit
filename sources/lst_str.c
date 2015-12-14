@@ -6,11 +6,11 @@
 /*   By: aperraul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/07 17:03:45 by aperraul          #+#    #+#             */
-/*   Updated: 2015/12/14 14:35:39 by aperraul         ###   ########.fr       */
+/*   Updated: 2015/12/14 15:58:25 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "structs.h"
+#include "../headers/structs.h"
 
 t_str	*ft_addc(t_str *begin, char c)
 {
