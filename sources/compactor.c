@@ -6,7 +6,7 @@
 /*   By: aperraul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/08 03:40:04 by aperraul          #+#    #+#             */
-/*   Updated: 2015/12/14 15:43:52 by cchameyr         ###   ########.fr       */
+/*   Updated: 2015/12/14 15:45:09 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ int			ft_checking(t_form *form, t_square sqr, t_point s_pt)
 		s_pt.y++;
 		s_pt.x = (unsigned int)(s_pt.x - f_pt.x);
 	}
-	ft_displaysquare(sqr, 0, 0, 7);
 	return (1);
 }
 
@@ -87,8 +86,6 @@ t_square	ft_backtrack(t_square sqr, t_form *form, t_point s_pt)
 
 t_square	ft_compct(t_square sqr, t_form *form, t_point s_pt)
 {
-	t_square temp;
-
 	if (form)
 	{
 		s_pt.y = -1;
@@ -100,13 +97,6 @@ t_square	ft_compct(t_square sqr, t_form *form, t_point s_pt)
 				if (ft_checking(form, sqr, s_pt))
 				{
 					sqr = ft_backtrack(sqr, form, s_pt);
-//					if (!(form->next))
-//						return (ft_apf(sqr, form, s_pt));
-//					sqr.fault = 0;
-//					temp = sqr;
-//					sqr = ft_compct(ft_apf(sqr, form, s_pt), form->next, s_pt);
-//					if (sqr.fault == 1)
-//						sqr = temp;
 					if (sqr.fault == 0)
 						return (sqr);
 				}

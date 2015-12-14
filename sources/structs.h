@@ -1,23 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   structs.h                                         :+:      :+:    :+:   */
+/*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aperraul <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: cchameyr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/12/07 17:05:29 by aperraul          #+#    #+#             */
-/*   Updated: 2015/12/11 16:12:44 by cchameyr         ###   ########.fr       */
+/*   Created: 2015/12/14 15:47:47 by cchameyr          #+#    #+#             */
+/*   Updated: 2015/12/14 15:47:54 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef STRUCS_H
-# define STRUCS_H
+#ifndef STRUCTS_H
+# define STRUCTS_H
 
 # include <stdlib.h>
 # include "libft.h"
-
-# define YOLO ft_putstr("\nYOLO\n");
-# define PAUSE while(1){sleep(1000);}
 
 typedef	struct		s_str
 {
