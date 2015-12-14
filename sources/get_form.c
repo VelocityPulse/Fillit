@@ -6,13 +6,13 @@
 /*   By: cchameyr <cchameyr@students.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/08 04:19:27 by cchameyr          #+#    #+#             */
-/*   Updated: 2015/12/11 14:12:30 by cchameyr         ###   ########.fr       */
+/*   Updated: 2015/12/14 14:37:16 by aperraul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
 
-t_form	*ft_voidline(t_form *form, t_point pt)
+t_form		*ft_voidline(t_form *form, t_point pt)
 {
 	while (pt.x < 4)
 	{
@@ -40,7 +40,7 @@ t_form	*ft_voidline(t_form *form, t_point pt)
 	return (NULL);
 }
 
-t_form *ft_voidcolon(t_form *form, t_point pt)
+t_form		*ft_voidcolon(t_form *form, t_point pt)
 {
 	while (pt.y < 4)
 	{
@@ -68,7 +68,7 @@ t_form *ft_voidcolon(t_form *form, t_point pt)
 	return (NULL);
 }
 
-t_form	*ft_initform(t_form *begin_form, t_point pt)
+t_form		*ft_initform(t_form *begin_form, t_point pt)
 {
 	t_form *form;
 
@@ -94,7 +94,7 @@ t_form	*ft_initform(t_form *begin_form, t_point pt)
 	return (begin_form);
 }
 
-t_form	*ft_getform(char *str, t_point pt, int i)
+t_form		*ft_getform(char *str, t_point pt, int i)
 {
 	t_form	*form;
 	t_form	*begin;

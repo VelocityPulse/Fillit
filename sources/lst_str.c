@@ -6,7 +6,7 @@
 /*   By: aperraul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/07 17:03:45 by aperraul          #+#    #+#             */
-/*   Updated: 2015/12/10 16:42:08 by cchameyr         ###   ########.fr       */
+/*   Updated: 2015/12/14 14:35:39 by aperraul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,18 +51,18 @@ t_str	*ft_newlstr(void)
 	return (list);
 }
 
-int	ft_indexcpt(t_str *begin)
+int		ft_indexcpt(t_str *begin)
 {
 	int		i;
-	t_str		*list;
+	t_str	*list;
 
 	i = 0;
 	if (!begin)
-	  return (0);
+		return (0);
 	list = begin;
 	while (list->next)
 	{
-	  	i += list->index;
+		i += list->index;
 		list = list->next;
 	}
 	return (i + list->index);
