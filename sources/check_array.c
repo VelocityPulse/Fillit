@@ -6,7 +6,7 @@
 /*   By: cchameyr <cchameyr@students.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/08 07:21:07 by cchameyr          #+#    #+#             */
-/*   Updated: 2015/12/10 16:17:23 by cchameyr         ###   ########.fr       */
+/*   Updated: 2015/12/14 14:27:32 by aperraul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,8 @@ int		ft_checkarray(t_form *form, t_point pt)
 
 int		ft_checklistform(t_form *list_form)
 {
-	t_form *form;
-	t_point pt;
+	t_form		*form;
+	t_point		pt;
 
 	pt.x = 0;
 	pt.y = 0;

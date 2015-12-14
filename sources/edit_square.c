@@ -6,7 +6,7 @@
 /*   By: cchameyr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/11 15:20:46 by cchameyr          #+#    #+#             */
-/*   Updated: 2015/12/11 15:27:18 by cchameyr         ###   ########.fr       */
+/*   Updated: 2015/12/14 14:28:04 by aperraul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int			ft_minsize(int nbform)
 
 t_square	ft_initsqr(int size)
 {
-	int y;
+	int			y;
 	t_square	sqr;
 
 	y = 0;
