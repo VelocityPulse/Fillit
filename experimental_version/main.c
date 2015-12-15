@@ -18,13 +18,17 @@ char	*ft_fdcapture(char *path)
 	char	c;
 	char	*str;
 	t_str	*l_str;
+	int		max;
 
+	max = 546;
 	l_str = NULL;
 	str = NULL;
 	if ((fd = open(path, O_RDONLY)) < 0)
 		return (NULL);
-	while (read(fd, &c, 1))
+	while (read(fd, &c, 1) && max--)
 		l_str = ft_addc(l_str, c);
+	if (!max)
+		return (NULL);
 	str = ft_exportstr(l_str);
 	ft_freelststr(l_str);
 	return (str);
