@@ -36,10 +36,6 @@ CC = gcc
 
 FLAGS = -Wall -Wextra -Werror
 
-INC =	headers/header.h \
-		headers/libft.h \
-		headers/structs.h
-
 all: $(NAME)
 
 $(NAME): $(OBJS)
