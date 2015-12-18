@@ -6,7 +6,7 @@
 /*   By: cchameyr <cchameyr@students.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/07 16:26:41 by cchameyr          #+#    #+#             */
-/*   Updated: 2015/12/14 16:00:45 by cchameyr         ###   ########.fr       */
+/*   Updated: 2015/12/18 14:18:00 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ int		ft_fillit(char *path)
 			sqr.size++;
 	}
 	ft_displaysquare(sqr, 0, 0, sqr.size);
+	ft_freeform(begin_form);
 	return (1);
 }
 

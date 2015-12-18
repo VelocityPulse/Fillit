@@ -6,7 +6,7 @@
 /*   By: aperraul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/08 04:04:30 by aperraul          #+#    #+#             */
-/*   Updated: 2015/12/14 15:58:07 by cchameyr         ###   ########.fr       */
+/*   Updated: 2015/12/18 14:20:55 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,4 +76,20 @@ void		ft_displayform(t_form *form, int x, int y)
 		ft_putchar('\n');
 	}
 	ft_putchar('\n');
+}
+
+t_form		*ft_freeform(t_form *form)
+{
+	t_form	*temp;
+
+	if (!form)
+		return (NULL);
+	while (form)
+	{
+		temp = form->next;
+		free(form);
+		form = temp;
+	}
+	form = NULL;
+	return (form);
 }
