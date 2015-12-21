@@ -6,7 +6,7 @@
 /*   By: aperraul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/08 04:04:30 by aperraul          #+#    #+#             */
-/*   Updated: 2015/12/12 12:33:11 by cchameyr         ###   ########.fr       */
+/*   Updated: 2015/12/18 14:20:54 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ t_form		*ft_newform(int index)
 	return (list);
 }
 
-void	ft_displaylist(t_form *begin, int x, int y)
+void		ft_displaylist(t_form *begin, int x, int y)
 {
 	t_form	*list;
 
@@ -59,7 +59,7 @@ void	ft_displaylist(t_form *begin, int x, int y)
 	}
 }
 
-void	ft_displayform(t_form *form, int x, int y)
+void		ft_displayform(t_form *form, int x, int y)
 {
 	while (y < 4)
 	{
@@ -76,4 +76,20 @@ void	ft_displayform(t_form *form, int x, int y)
 		ft_putchar('\n');
 	}
 	ft_putchar('\n');
+}
+
+t_form		*ft_freeform(t_form *form)
+{
+	t_form	*temp;
+
+	if (!form)
+		return (NULL);
+	while (form)
+	{
+		temp = form->next;
+		free(form);
+		form = temp;
+	}
+	form = NULL;
+	return (form);
 }
