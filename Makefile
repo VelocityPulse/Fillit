@@ -6,7 +6,7 @@
 #    By: aperraul <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/12/14 16:14:09 by aperraul          #+#    #+#              #
-#    Updated: 2016/01/03 14:36:49 by cchameyr         ###   ########.fr        #
+#    Updated: 2016/01/03 14:43:38 by cchameyr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,9 +39,9 @@ FLAGS = -Wall -Wextra -Werror
 all: $(NAME)
 
 $(NAME): $(LIBFT) $(OBJS)
-	$(CC) $(FLAGS) $(OBJS) -o $(NAME) $(LIB)
+	$(CC) $(FLAGS) $(OBJS) -o $(NAME) $(LIBFT)
 
-$(OBJS):
+$(OBJS): $(LIBFT)
 	$(CC) $(FLAGS) -c $(SRCS)
 
 $(LIBFT):
