@@ -6,7 +6,7 @@
 #    By: aperraul <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/12/14 16:14:09 by aperraul          #+#    #+#              #
-#    Updated: 2016/01/03 14:43:38 by cchameyr         ###   ########.fr        #
+#    Updated: 2016/11/27 16:08:42 by cchameyr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,7 @@ OBJS =	check_array.o \
 		lst_str.o \
 		main.o
 
-LIBFT =	lib/libft.a
+LIBFT =	libft/libft.a
 
 CC = gcc
 
@@ -39,20 +39,20 @@ FLAGS = -Wall -Wextra -Werror
 all: $(NAME)
 
 $(NAME): $(LIBFT) $(OBJS)
-	$(CC) $(FLAGS) $(OBJS) -o $(NAME) $(LIBFT)
+	$(CC) $(FLAGS) $(OBJS) $(LIBFT) -o $(NAME)
 
 $(OBJS): $(LIBFT)
 	$(CC) $(FLAGS) -c $(SRCS)
 
 $(LIBFT):
-	make -C ./lib/
+	make -C ./libft/
 
 clean:
 	rm -f $(OBJS)
-	make clean -C ./lib/
+	make clean -C ./libft/
 
 fclean: clean
 	rm -f $(NAME)
-	make fclean -C ./lib/
+	make fclean -C ./libft/
 
 re: fclean all
